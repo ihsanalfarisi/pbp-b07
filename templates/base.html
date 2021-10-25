@@ -1,18 +1,46 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   {% block meta %}
   {% endblock meta %}
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav ms-auto my-2">
+    <li class="nav-item active">
+      <a class="nav-link active navbar-active me-5" href="/">
+        Home
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle me-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Fitur
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#">Info Statistik</a></li>
+        <li><a class="dropdown-item" href="#">Regulasi</a></li>
+        <li><a class="dropdown-item" href="#">Get Swabbed!</a></li>
+        <li><a class="dropdown-item" href="#">Artikel</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link me-5" href="/login">
+        Login
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="mainbox container-fluid">
   {% block content %}
   {% endblock content %}
+</div>
 </body>
 
 </html>

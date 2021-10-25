@@ -1,6 +1,6 @@
 # PROYEK TENGAH SEMESTER: B07
 
-Link Heroku App [Click Here](https://dashboard.heroku.com/apps/pbp-b07)
+Link Heroku App [Click Here](https://pbp-b07.herokuapp.com/)
 
 Link GitLab [Click Here](https://gitlab.com/amira.husna01/pbp-b07.git)
 
@@ -16,7 +16,7 @@ Anggota Kelompok:
 - Muhammad Ihsan Al Farisi - 2006596693
 - Neiva Annur Syahistie - 2006531711
 
-## Aplikasi & Manfaat:
+## Aplikasi & Manfaat
 
 Pada masa pandemi ini, perjalanan wisata ke luar negeri menjadi terbatas karena banyaknya persyaratan yang harus
 dipenuhi. Website ini dibuat untuk memudahkan masyarakat yang ingin melakukan perjalanan ke luar negeri, yaitu dengan
@@ -28,7 +28,7 @@ kontak pihak penanganan Covid-19 di daerah tujuan. Dengan menggunakan website al
 ingin melakukan perjalanan ke luar negeri dapat menemukan seluruh informasi yang dibutuhkan dan mempersiapkan
 perjalanannya secara baik.
 
-## Modul:
+## Modul
 
 - Laman utama (Homepage) & Sign Up/Login
 - Statistika Covid-19 di Daerah Tujuan

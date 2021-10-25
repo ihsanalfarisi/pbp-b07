@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Artikel(models.Model):
-    judul = models.CharField()
+    judul = models.CharField(max_length=30)
     # foto = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100) #belum lengkap
     isi = models.TextField()
     deskripsi = models.TextField() #ini bisa ditaro di views buat pengaturannya

@@ -17,3 +17,7 @@ def add_artikel(request):
     if (form.is_valid and request.method == 'POST'):
         form.save()
     return render(request, 'artikel_form.html')
+
+def json(request):
+    data = serializers.serialize('json', Artikel.objects.all())
+    return HttpResponse(data, content_type="application/json")

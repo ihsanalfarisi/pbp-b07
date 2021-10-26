@@ -7,5 +7,5 @@ urlpatterns = [
     # path('notes/<id>', get_note, name='note-detail'),
     # path('notes/<id>/delete', delete_note),
     # path('notes/<id>/update', update_note),
-    # path('json', json, name='json'),
+    path('json', json, name='json'),
 ]

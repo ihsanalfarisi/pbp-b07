@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('stat-covid/', include('stat_covid.urls')),
     path('article/', include('artikel_page.urls')),
+    path('regulasi/', include('regulasi.urls')),
 ]

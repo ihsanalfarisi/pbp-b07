@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'artikel_page'
 ]
 
-crispy_template_pack ='uni_form'
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

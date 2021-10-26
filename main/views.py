@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import NewUserForm
 
 def home(request):
-    return render(request, 'main/home.html', context={"dashboard":True})
+    return render(request, 'main/home.html')
 
 def register_request(request):
     if request.method == "POST":

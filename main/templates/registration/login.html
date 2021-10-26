@@ -1,13 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
 <title>Log In</title>
-{% endblock meta %} {% block content %}
+{% endblock meta %}
+{% load crispy_forms_tags %}
+{% block content %}
 
 <!--Login-->
 <div class="container py-5">
     <h1>Login</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ login_form }}
+        {{ login_form|crispy }}
         <button class="btn btn-primary" type="submit">Login</button>
     </form>
     <p class="text-center">Don't have an account? <a href="/signup">Create an account</a>.</p>

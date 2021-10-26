@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="container">
+  <div class="pt-5">
+    <form
+      method="POST"
+      id="addCountryForm"
+      data-url="{% url 'StatCovid' %}"
+      style="width: 700px; margin: auto"
+    >
+      <div class="row">
+        <div class="col-11 ps-0 pe-1">
+          {% csrf_token %} {% for field in form %} {{ field }} {% endfor %}
+        </div>
+        <div class="col-1 px-1 pe-0">
+          <button type="submit" class="btn btn-secondary" id="addButton">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- ----------------------------------------- -->
+  <!-- ----------------------------------------- -->
+  <!-- ----------------------------------------- -->
+
+  <div>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      List of Countries
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body m-0 p-0">
+        <div class="row m-0 p-0" id="countryList">
+          <div class="col-3 m-0 p-0">
+            {% for country_name in country_list_1 %}
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item flex-fill text-truncate">
+                <div
+                  class="text-truncate"
+                  id="countryName"
+                  data-text="{{ country_name }}"
+                >
+                  {{ country_name }}
+                </div>
+              </li>
+            </ul>
+            {% endfor %}
+          </div>
+          <div class="col-3 m-0 p-0">
+            {% for country_name in country_list_2 %}
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item flex-fill text-truncate">
+                <div
+                  class="text-truncate"
+                  id="countryName"
+                  data-text="{{ country_name }}"
+                >
+                  {{ country_name }}
+                </div>
+              </li>
+            </ul>
+            {% endfor %}
+          </div>
+          <div class="col-3 m-0 p-0">
+            {% for country_name in country_list_3 %}
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item flex-fill text-truncate">
+                <div
+                  class="text-truncate"
+                  id="countryName"
+                  data-text="{{ country_name }}"
+                >
+                  {{ country_name }}
+                </div>
+              </li>
+            </ul>
+            {% endfor %}
+          </div>
+          <div class="col-3 m-0 p-0">
+            {% for country_name in country_list_4 %}
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item flex-fill text-truncate">
+                <div
+                  class="text-truncate"
+                  id="countryName"
+                  data-text="{{ country_name }}"
+                >
+                  {{ country_name }}
+                </div>
+              </li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ----------------------------------------- -->
+  <!-- ----------------------------------------- -->
+  <!-- ----------------------------------------- -->
+
+  <div class="row pt-5" id="details-list">
+    {% if countries %} {% for country in countries %}
+    <div class="col-4 mb-4">
+      <div class="card text-center" style="height: 400px">
+        <h5 class="card-header" data-code="{{ country.code }}"></h5>
+        <div class="card-body">
+          <h3 data-code="{{ country.code }}"></h3>
+        </div>
+        <div class="card-footer" style="padding: 0px 0px 0px 0px">
+          <div class="d-grid gap-2">
+            <button
+              type="button"
+              class="btn btn-light btn-block"
+              data-bs-toggle="modal"
+              data-bs-target="#confirmedCasesModal"
+              id="details"
+              data-code="{{ country.code }}"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+  {% include "modal.html" %}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="{% static 'stat_covid.js' %}"></script>
+
+{% endblock %}

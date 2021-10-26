@@ -1,0 +1,118 @@
+<div
+  class="modal fade"
+  id="confirmedCasesModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmed Cases</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" id="confirmedCases"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          class="btn btn-primary"
+          data-bs-target="#vaccinatedModal"
+          data-bs-toggle="modal"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ----------------------------------------- -->
+<div
+  class="modal fade"
+  id="vaccinatedModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Vaccinated</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" id="vaccinated"></div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#confirmedCasesModal"
+          data-bs-toggle="modal"
+        >
+          Back
+        </button>
+        <button
+          class="btn btn-primary"
+          data-bs-target="#confirmedDeathModal"
+          data-bs-toggle="modal"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ----------------------------------------- -->
+<div
+  class="modal fade"
+  id="confirmedDeathModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmed Deaths</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" id="confirmedDeaths"></div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#vaccinatedModal"
+          data-bs-toggle="modal"
+        >
+          Back
+        </button>
+        <button class="btn btn-primary" disabled>Next</button>
+      </div>
+    </div>
+  </div>
+</div>

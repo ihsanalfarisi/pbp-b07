@@ -1,4 +1,5 @@
 from django.forms.models import model_to_dict
+from django.http import response
 from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic import View
@@ -6,6 +7,7 @@ from .models import Country
 from .forms import CountryForm
 import pycountry
 import math
+
 # Create your views here.
 class StatCovid(View):
     def get(self, request):
@@ -50,12 +52,15 @@ class StatCovid(View):
     def post(self, request):
         form = CountryForm(request.POST or None)
         if (request.method == "POST" and form.is_valid()):
-            print("berhasil")
-            new_data = form.save()
+            n = form.cleaned_data["country_name"]
+            c = Country(country_name=n)
+            c.save()
+            request.user.country.add(c)
+
+            # new_data = form.save()
             # return JsonResponse({'country': model_to_dict(new_data)}, status=200)
-            return redirect('StatCovid')
-        else:
-            return redirect('StatCovid')
+            # return redirect('StatCovid')    
+        return redirect('StatCovid')
 
 # def stat(request):
 #     country_url = []

@@ -108,7 +108,7 @@
   <!-- ----------------------------------------- -->
 
   <div class="row pt-5" id="details-list">
-    {% if countries %} {% for country in countries %}
+    {% for country in user.country.all %}
     <div class="col-4 mb-4">
       <div class="card text-center" style="height: 400px">
         <h5 class="card-header" data-code="{{ country.code }}"></h5>
@@ -131,7 +131,7 @@
         </div>
       </div>
     </div>
-    {% endfor %} {% endif %}
+    {% endfor %}
   </div>
   {% include "modal.html" %}
 </div>

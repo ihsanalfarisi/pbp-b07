@@ -1,7 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 import pycountry
 # Create your models here.
+
 class Country(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="country", null=True)
     country_name = models.CharField(max_length=50)
     code = models.CharField(max_length=3, editable=False)
 

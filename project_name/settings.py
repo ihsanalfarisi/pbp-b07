@@ -56,8 +56,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'stat_covid'
+    'stat_covid',
+    # 'crispy_forms',
+    'artikel_page'
 ]
+
+# CRISPY_TEMPLATE_PACK = 'uni_form'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

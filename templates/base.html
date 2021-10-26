@@ -1,4 +1,5 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,36 +12,71 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <ul class="navbar-nav ms-auto my-2">
-        <li class="nav-item active">
-          <a class="nav-link active navbar-active me-5" href="/"> Home </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle me-5"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Fitur
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item" href="{% url 'StatCovid' %}"
-                >Info Statistik</a
-              >
-            </li>
-            <li><a class="dropdown-item" href="#">Regulasi</a></li>
-            <li><a class="dropdown-item" href="#">Get Swabbed!</a></li>
-            <li><a class="dropdown-item" href="#">Artikel</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link me-5" href="/login"> Login </a>
-        </li>
-      </ul>
+      <button
+        class="navbar-toggler ms-3"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto my-2">
+          <li class="nav-item">
+            <a class="nav-link me-5 ms-3" href="/"> Home </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle me-5 mr-2 ms-3"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Fitur
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'StatCovid' %}"
+                  >Info Statistik</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">Regulasi</a></li>
+              <li><a class="dropdown-item" href="#">Get Swabbed!</a></li>
+              <li><a class="dropdown-item" href="article">Artikel</a></li>
+            </ul>
+          </li>
+          {% if user.is_authenticated %}
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle me-5 ms-3"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Welcome, {{user.username}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+
+          {% else %}
+
+          <li class="nav-item">
+            <a class="nav-link me-5 ms-3" href="/login">Login</a>
+          </li>
+
+          {% endif %}
+        </ul>
+      </div>
     </nav>
     <div class="mainbox container-fluid">
       {% block content %} {% endblock content %}

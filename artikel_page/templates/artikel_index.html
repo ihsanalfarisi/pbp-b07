@@ -6,6 +6,7 @@
 {% endblock meta %} 
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/artikel.css' %}" />
 <div class="article-page">
   <div class="container py-3">
     <header>
@@ -23,9 +24,10 @@
   </div>
 
   <main id="article" class="container py-4 px-5">
-
-  </main>
-</div>  
+    <p class="text-muted fst-italic fs-1 text-center">
+        Artikel Belum Tersedia
+    </p>
+  </main> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/artikel.js' %}"></script>
 {% endblock content %}

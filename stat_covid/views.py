@@ -10,6 +10,7 @@ import math
 
 # Create your views here.
 class StatCovid(View):
+
     def get(self, request):
         form = CountryForm()
         countries = Country.objects.all()
@@ -51,21 +52,27 @@ class StatCovid(View):
     # gajadi dipake kayakny
     def post(self, request):
         form = CountryForm(request.POST or None)
+
+        country_list = []
+        for country in pycountry.countries:
+            country_list.append(country.name)
+
         if (request.method == "POST" and form.is_valid()):
             n = form.cleaned_data["country_name"]
-            c = Country(country_name=n)
-            c.save()
-            request.user.country.add(c)
+            if (n in country_list):
+                c = Country(country_name=n)
+                c.save()
+                request.user.country.add(c)
 
             # new_data = form.save()
             # return JsonResponse({'country': model_to_dict(new_data)}, status=200)
             # return redirect('StatCovid')    
         return redirect('StatCovid')
 
-# def stat(request):
-#     country_url = []
-#     countries = Country.objects.all()
-#     for country in countries:
-#         country_url.append("https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&facet=none&pickerSort=asc&pickerMetric=location&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=true&Align+outbreaks=false&country=~" + getattr(country, 'code') + "&hideControls=true")
-#     response = {'country_url':country_url}
-#     return render(request, 'stat.html', response)
+def deleteCountry(request, country_id):
+    country = Country.objects.get(pk=country_id)
+    country.delete()
+    return redirect('StatCovid')
+
+    
+

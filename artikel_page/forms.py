@@ -4,7 +4,7 @@ from .models import Artikel
 class ArtikelForm(forms.ModelForm):
     class Meta:
       model = Artikel
-      fields = "__all__"
+      exclude = ('time_published',)
     
     error_messages = {
           'required' : 'Please Fill in the Blank'

@@ -7,4 +7,4 @@ class Artikel(models.Model):
     isi = models.TextField()
     deskripsi = models.CharField(max_length=20) #ini bisa ditaro di views buat pengaturannya
     # penulis = models.CharField(max_length=30)
-    # time_modified = models.TimeField(auto_now_add=True)
+    time_published = models.DateTimeField(auto_now_add=True)

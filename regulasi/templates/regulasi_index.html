@@ -11,7 +11,29 @@
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                 <h1 class="display-5 fw-normal">Info Regulasi</h1>
                 <p class="fs-5 text-muted">Find out about your destination's Covid-19 regulations!</p>
+                <a>
+                    <div class="pt-5">
+                        <form
+                          method="POST"
+                          id="pickCountryForm"
+                          style="width: 500px; margin: auto"
+                        >
+                            <div class="row">
+                                <div class="col-11 ps-0 pe-1">
+                                    {% csrf_token %}
+                                </div>
+                                <div class="col-1 px-1 pe-0">
+                                    <button type="submit" class="btn btn-secondary" id="addButton">
+                                        Choose
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </a>
             </div>
         </header>
     </div>
+
+
 {% endblock content %}

@@ -18,6 +18,15 @@ def add_artikel(request):
         form.save()
     return render(request, 'artikel_form.html')
 
+def get_artikel(request, id):
+    artikel= serializers.serialize("json",Artikel.objects.filter(id=id))
+    return HttpResponse(artikel, content_type="application/json")
+
+# def view_artikel(request, id):
+#     artikel = get_object_or_404(Artikel, id = id)
+#     response = {'artikel': artikel}
+#     return render(request, 'artikel_detail.html', response)
+
 def json(request):
     data = serializers.serialize('json', Artikel.objects.all())
     return HttpResponse(data, content_type="application/json")

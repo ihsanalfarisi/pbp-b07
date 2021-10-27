@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Info Regulasi</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container py-3">
+        <header>
+            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-5 fw-normal">Info Regulasi</h1>
+                <p class="fs-5 text-muted">Cari tahu mengenai info regulasi negara destinasimu disini!</p>
+                <a>
+                    <div class="col-md-3" style="margin: auto; padding-top: 50px;">
+                        <label for="validationCustom04" class="form-label">Pilih negara destinasi</label>
+                        <select class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Nama negara</option>
+                            <option>Malaysia</option>
+                            <option>Singapura</option>
+                            <option>Thailand</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Mohon pilih negara yang valid.
+                        </div>
+                        <button type="button" href='regulasi_detail.html' class="btn btn-secondary" style="margin: 30px;">
+                            Pilih
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </header>
+    </div>
+{% endblock content %}

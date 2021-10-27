@@ -9,5 +9,9 @@ class CountryForm(forms.ModelForm):
         fields = ['country_name']
 
         widgets = {
-            'country_name': forms.TextInput(attrs={'class': 'form-control', 'id':'inputCountry'})
+            'country_name': forms.TextInput(attrs={
+                'class': 'form-control', 
+                'id':'inputCountry',
+                'placeholder':'Nama negara' 
+            })
         }

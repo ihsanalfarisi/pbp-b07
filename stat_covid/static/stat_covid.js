@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  var popoverTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="popover"]')
+  );
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
   // Nambahain nama negara
   $.ajax({
     type: "GET",
@@ -56,6 +62,20 @@ $(document).ready(function () {
     $temp.val($(this).data("text")).select();
     document.execCommand("copy");
     $temp.remove();
+  });
+
+  $("#countryList").on("mousedown", "#countryName", function () {
+    $("#" + $(this).data("id")).attr(
+      "class",
+      "list-group-item flex-fill text-truncate bg-light"
+    );
+  });
+
+  $("#countryList").on("mouseup", "#countryName", function () {
+    $("#" + $(this).data("id")).attr(
+      "class",
+      "list-group-item flex-fill text-truncate"
+    );
   });
 
   // Buat ngeclick tombol details

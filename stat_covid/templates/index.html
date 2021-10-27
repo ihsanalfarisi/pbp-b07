@@ -1,6 +1,23 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} {% block meta %}
+<title>Info Statistik</title>
+{% endblock meta %} {% block content %} {% load static %}
+<div class="container py-3">
+  <header>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-5 fw-normal">Info Statistik</h1>
+      <p class="fs-5 text-muted">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi eum
+        expedita cum voluptate neque aut. Minus, eveniet reiciendis suscipit
+        voluptas cupiditate quisquam voluptate enim molestiae voluptates autem
+        veritatis vero ipsum.
+      </p>
+    </div>
+  </header>
+</div>
+
 <div class="container">
   <div class="pt-5">
+    {% if user.is_authenticated %}
     <form
       method="POST"
       id="addCountryForm"
@@ -18,102 +35,218 @@
         </div>
       </div>
     </form>
+    {% else %}
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+        viewBox="0 0 16 16"
+        role="img"
+        aria-label="Warning:"
+      >
+        <path
+          d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        />
+      </svg>
+      <div>Login terlebih dahulu</div>
+    </div>
+    <form
+      method="POST"
+      id="addCountryForm"
+      data-url="{% url 'StatCovid' %}"
+      style="width: 700px; margin: auto"
+    >
+      <fieldset disabled>
+        <div class="row">
+          <div
+            class="col-11 ps-0 pe-1"
+            data-bs-toggle="popover"
+            data-bs-trigger="hover focus"
+            data-bs-placement="bottom"
+            data-bs-content="Login terlebih dahulu"
+          >
+            {% csrf_token %} {% for field in form %} {{ field }} {% endfor %}
+          </div>
+          <div class="col-1 px-1 pe-0">
+            <button type="submit" class="btn btn-secondary" id="addButton">
+              Add
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    {% endif %}
   </div>
 
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
 
-  <div>
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapseExample"
-      aria-expanded="false"
-      aria-controls="collapseExample"
-    >
-      List of Countries
-    </button>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body m-0 p-0">
-        <div class="row m-0 p-0" id="countryList">
-          <div class="col-3 m-0 p-0">
-            {% for country_name in country_list_1 %}
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item flex-fill text-truncate">
-                <div
-                  class="text-truncate"
-                  id="countryName"
-                  data-text="{{ country_name }}"
-                >
-                  {{ country_name }}
+  <div class="mt-3">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            Negara
+          </button>
+        </h2>
+        <div
+          class="accordion-collapse collapse"
+          id="collapseExample"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body m-0 p-0">
+            <div class="card card-body m-0 p-0">
+              <div class="row m-0 p-0" id="countryList">
+                <div class="col-3 m-0 p-0">
+                  {% for country_name in country_list_1 %}
+                  <ul class="list-group list-group-horizontal">
+                    <li
+                      class="list-group-item flex-fill text-truncate"
+                      id="{{ country_name | truncatechars:3}}{{ forloop.counter0 }}"
+                    >
+                      <div
+                        class="text-truncate"
+                        id="countryName"
+                        data-id="{{ country_name | truncatechars:3}}{{ forloop.counter0 }}"
+                        data-text="{{ country_name }}"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="right"
+                        data-bs-content="klik untuk salin"
+                      >
+                        {{ country_name }}
+                      </div>
+                    </li>
+                  </ul>
+                  {% endfor %}
                 </div>
-              </li>
-            </ul>
-            {% endfor %}
-          </div>
-          <div class="col-3 m-0 p-0">
-            {% for country_name in country_list_2 %}
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item flex-fill text-truncate">
-                <div
-                  class="text-truncate"
-                  id="countryName"
-                  data-text="{{ country_name }}"
-                >
-                  {{ country_name }}
+                <div class="col-3 m-0 p-0">
+                  {% for country_name in country_list_2 %}
+                  <ul class="list-group list-group-horizontal">
+                    <li
+                      class="list-group-item flex-fill text-truncate"
+                      id="{{ country_name | truncatechars:3}}{{ forloop.counter }}"
+                    >
+                      <div
+                        class="text-truncate"
+                        id="countryName"
+                        data-id="{{ country_name | truncatechars:3}}{{ forloop.counter }}"
+                        data-text="{{ country_name }}"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="right"
+                        data-bs-content="klik untuk salin"
+                      >
+                        {{ country_name }}
+                      </div>
+                    </li>
+                  </ul>
+                  {% endfor %}
                 </div>
-              </li>
-            </ul>
-            {% endfor %}
-          </div>
-          <div class="col-3 m-0 p-0">
-            {% for country_name in country_list_3 %}
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item flex-fill text-truncate">
-                <div
-                  class="text-truncate"
-                  id="countryName"
-                  data-text="{{ country_name }}"
-                >
-                  {{ country_name }}
+                <div class="col-3 m-0 p-0">
+                  {% for country_name in country_list_3 %}
+                  <ul class="list-group list-group-horizontal">
+                    <li
+                      class="list-group-item flex-fill text-truncate"
+                      id="{{ country_name | truncatechars:3}}{{ forloop.counter0 }}"
+                    >
+                      <div
+                        class="text-truncate"
+                        id="countryName"
+                        data-id="{{ country_name | truncatechars:3}}{{ forloop.counter0 }}"
+                        data-text="{{ country_name }}"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="right"
+                        data-bs-content="klik untuk salin"
+                      >
+                        {{ country_name }}
+                      </div>
+                    </li>
+                  </ul>
+                  {% endfor %}
                 </div>
-              </li>
-            </ul>
-            {% endfor %}
-          </div>
-          <div class="col-3 m-0 p-0">
-            {% for country_name in country_list_4 %}
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item flex-fill text-truncate">
-                <div
-                  class="text-truncate"
-                  id="countryName"
-                  data-text="{{ country_name }}"
-                >
-                  {{ country_name }}
+                <div class="col-3 m-0 p-0">
+                  {% for country_name in country_list_4 %}
+                  <ul class="list-group list-group-horizontal">
+                    <li
+                      class="list-group-item flex-fill text-truncate"
+                      id="{{ country_name | truncatechars:3}}{{ forloop.counter }}"
+                    >
+                      <div
+                        class="text-truncate"
+                        id="countryName"
+                        data-id="{{ country_name | truncatechars:3}}{{ forloop.counter }}"
+                        data-text="{{ country_name }}"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="right"
+                        data-bs-content="klik untuk salin"
+                      >
+                        {{ country_name }}
+                      </div>
+                    </li>
+                  </ul>
+                  {% endfor %}
                 </div>
-              </li>
-            </ul>
-            {% endfor %}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- ----------------------------------------- -->
   </div>
 
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
-
-  <div class="row pt-5" id="details-list">
+  <hr class="my-5" />
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target=".multi-collapse"
+    aria-expanded="false"
+    aria-controls="multiCollapseExample1"
+  >
+    Edit
+  </button>
+  <div class="row mt-3" id="details-list">
     {% for country in user.country.all %}
     <div class="col-4 mb-4">
-      <div class="card text-center" style="height: 400px">
+      <div class="card text-center">
+        <!-- tombol delete -->
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body m-0 p-0 bg-danger">
+            <div class="d-grid gap-2">
+              <button
+                type="button"
+                class="btn btn-danger btn-block"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal{{ country.id }}"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
         <h5 class="card-header" data-code="{{ country.code }}"></h5>
         <div class="card-body">
-          <h3 data-code="{{ country.code }}"></h3>
+          <h3 data-code="{{ country.code }}">
+            <div class="spinner-border text-secondary"></div>
+          </h3>
         </div>
         <div class="card-footer" style="padding: 0px 0px 0px 0px">
           <div class="d-grid gap-2">
@@ -130,6 +263,7 @@
           </div>
         </div>
       </div>
+      {% include "modal_delete.html" %}
     </div>
     {% endfor %}
   </div>

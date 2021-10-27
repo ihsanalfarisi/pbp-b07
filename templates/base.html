@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
     {% block meta %} {% endblock meta %}
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler ms-3"
@@ -82,6 +82,19 @@
       {% block content %}
 
       {% endblock content %}
+    </div>
+    <div class="container mt-auto">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2021 CHRONOS, PBP-B07</p>
+
+        <ul class="nav col-me-4 justify-content-end">
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="/stat-covid" class="nav-link px-2 text-muted">Info Statistik</a></li>
+          <li class="nav-item"><a href="/regulasi" class="nav-link px-2 text-muted">Regulasi</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Get Swabbed!</a></li>
+          <li class="nav-item"><a href="/article" class="nav-link px-2 text-muted">Artikel</a></li>
+        </ul>
+      </footer>
     </div>
   </body>
 </html>

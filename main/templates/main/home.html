@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block meta %}
-<title>Home</title>
+<title>Safe Flight</title>
 {% endblock meta %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
 
--<div class="container-fluid">
+<div class="container-fluid">
   <div class="col">
     <div class="row ">
       <div class="col-sm-5 judul">
@@ -21,7 +22,7 @@
       </div>
       <div class="col-sm-7 mt-5" style="padding-left: 50px">
         <div class="container">
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="{% static 'img/traveling 1.jpg' %}" class="d-block w-100"
@@ -40,11 +41,11 @@
                      style="border-radius:10px" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
               <span class="carousel-control-previcon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -52,19 +53,62 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <h1 class="homedua">Apa Kata Mereka?</h1>
-      <div class="container shadow-lg p-3 mb-5 bg-body mt-5" style="border-radius: 30px">
-        <div class="container mx-5 my-5">
-        <h3>"Email adalah singkatan dari Elektronik Mail atau dalam bahasa Indonesia disebut Surat Elektronik merupakan
-          sarana dalam mengirim surat yang dilakukan melalui media internet. Media internet yang dimaksud bisa melalui
-          komputer atau handphone yang memiliki akses internet."</h3>
-          <br>
-          <h4>-Anonymous</h4>
+      <div class="container mt-5">
+        <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Data Statistik Covid-19 Dunia</h1>
+        <div class="accordion" id="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Confirmed Cases
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+              <div class="accordion-body">
+                <div id="confirmedCases" class="container"></div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Vaccinated
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+              <div class="accordion-body">
+                <div id="vaccinated" class="container"></div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Confirmed Deaths
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordiond">
+              <div class="accordion-body">
+                <div id="confirmedDeaths" class="container"></div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="container">
+        <h1 class="homedua">Apa Kata Mereka?</h1>
+        <div class="container shadow-lg p-3 mb-5 bg-body mt-2" style="border-radius: 30px">
+          <div class="container mx-5 my-5">
+          <h3>"Email adalah singkatan dari Elektronik Mail atau dalam bahasa Indonesia disebut Surat Elektronik merupakan
+            sarana dalam mengirim surat yang dilakukan melalui media internet. Media internet yang dimaksud bisa melalui
+            komputer atau handphone yang memiliki akses internet."</h3>
+            <br>
+            <h4>-Anonymous</h4>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock content %}

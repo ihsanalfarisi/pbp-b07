@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'main',
     'stat_covid',
     'crispy_forms',
-    'artikel_page'
+    'artikel_page',
+    'info_hotel'
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'

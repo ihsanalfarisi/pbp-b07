@@ -1,6 +1,6 @@
 from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
 from .models import Hotel
-from .forms import HotelForm
+# from .forms import HotelForm
 
 # Create your views here.
 

@@ -12,6 +12,7 @@ $(document).ready(function () {
     success: function (data) {
       $("h5").each(function () {
         var code = $(this).data("code"); // atribut data-code
+        if (!data[code]) return;
         $(this).html(data[code]["location"]);
       });
     },
@@ -24,15 +25,25 @@ $(document).ready(function () {
     success: function (data) {
       $("h3").each(function () {
         var code = $(this).data("code"); // atribut data-code
+        if (!data[code]) return;
         var length = data[code]["data"].length;
+        var cases = data[code]["data"][length - 1]["total_cases"];
+        var date = data[code]["data"][length - 1]["date"];
         $(this).html(
-          data[code]["data"][length - 1]["total_cases"] +
-            " CASES<br/><br/><br/><br/><br/><br/><br/>" +
-            data[code]["data"][length - 1]["date"]
+          "<br/>Coronavirus Cases:<br/>" +
+            numberWithCommas(cases) +
+            "<br/><br/><br/><span class = 'fs-6'>Last updated on " +
+            date +
+            "</span>"
         );
       });
     },
   });
+
+  // ngeformat angka dari https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   // $("#addButton").click(function () {
   //   var serializedData = $("#addCountryForm");

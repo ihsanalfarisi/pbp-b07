@@ -4,6 +4,6 @@ from django.db import models
 class Hotel(models.Model):
     country = models.CharField(max_length=30)
     nama_hotel = models.CharField(max_length=30)
-    foto = models.ImageField() 
+    foto = models.ImageField(upload_to='media/', default='static/img/default.jpg', blank=True)
     harga = models.CharField(max_length=50) 
     review = models.TextField()

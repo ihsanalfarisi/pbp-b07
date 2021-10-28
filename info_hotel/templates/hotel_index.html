@@ -31,24 +31,24 @@
     </header>
     
     <div>
-      <div class="row"></div>
+      <div class="row">
         {% for hotel in hotels %}
-          <div class="col-lg-3 col-md-6">
-            {% if hotel.country == Country %}
-              <div class="card" style="margin-bottom: 30px;">
-                <div class="card-header">
-                  {{ hotel.country }}
-                </div>
-                <img class="card-img-top" src="{{ hotel.foto.url }}" alt="hotel image">
-                <div class="card-body">
-                  <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
-                  <p class="card-text">Harga: {{ hotel.harga }}</p>
-                  <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
-                </div>
+        {% if hotel.country == Country %}
+          <div class="col-lg-6 col-md-6"> 
+            <div class="card" style="margin-bottom: 30px;">
+              <div class="card-header">
+                {{ hotel.country }}
               </div>
-            {% endif %}
+              <img class="card-img-top" src="/media/{{hotel.foto}}" alt="hotel image">
+              <div class="card-body">
+                <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
+                <p class="card-text">Harga: {{ hotel.harga }}</p>
+                <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
+              </div>
+            </div>
           </div>
-        {% endfor %} 
+        {% endif %}
+      {% endfor %} 
       </div>
     </div>
 </div>

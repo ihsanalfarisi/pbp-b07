@@ -1,7 +1,7 @@
 from django.db import models
 
 class Fitur(models.Model):
-    nama = models.TextField()
+    nama = models.CharField(max_length=30)
     deskripsi = models.TextField()
-    icon = models.TextField()
-    link = models.TextField()
+    icon = models.CharField(max_length=30)
+    link = models.CharField(max_length=30)

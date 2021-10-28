@@ -109,6 +109,7 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Set database settings automatically using DATABASE_URL.
 if PRODUCTION:

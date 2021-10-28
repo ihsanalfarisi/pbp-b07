@@ -27,22 +27,32 @@
                 <input type="submit">
             </form>
             <h3 style="text-align: center"> Hotel Karantina Terbaik di {{Country}}</h3>
-        </div> 
+        </div>
     </header>
+    
     <div>
-        {% for hotel in list_hotel %}
+      <div class="row"></div>
+        <div class="col-sm-6">
+          {% for hotel in hotels %} 
             {% if hotel.country == Country %}
-            <!-- sblm dijadiin card -->
-            <h5>Nama Hotel: {{ hotel.namaHotel }}</h5>
-            <!-- <img src='{{ hotel.review }}' class="d-block w-100" style="border-radius:10px" alt=""> -->
-            <ul>Image: {{ hotel.gambar }}</ul>
-            <ul>Harga 1 Tamu:  {{ hotel.harga }}</ul>
-            <a type="button" href='{{ hotel.review }}' class="btn btn-success">Baca Review</a>
-            <hr>
+              <div class="card" style="margin-bottom: 30px;">
+                <div class="card-header">
+                  {{ hotel.country }}
+                </div>
+                <img class="card-img-top" src="{{ hotel.foto.url }}" alt="hotel image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
+                  <p class="card-text">Harga: {{ hotel.harga }}</p>
+                  <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
+                </div>
+              </div>
             {% endif %}
-        {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
 </div>
+
 <script>
     function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,

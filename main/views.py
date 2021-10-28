@@ -2,11 +2,14 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
+from .models import Fitur
 
 from .forms import NewUserForm
 
 def home(request):
-    return render(request, 'main/home.html')
+    fitur = Fitur.objects.all()
+    response = {'fitur' : fitur}
+    return render(request, 'main/home.html', response)
 
 def register_request(request):
     if request.method == "POST":

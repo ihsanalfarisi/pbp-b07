@@ -27,13 +27,13 @@
                 <input type="submit">
             </form>
             <h3 style="text-align: center"> Hotel Karantina Terbaik di {{Country}}</h3>
-        </div> 
+        </div>
     </header>
     <div>
         {% for hotel in list_hotel %}
             {% if hotel.country == Country %}
             <!-- sblm dijadiin card -->
-            <h5>Nama Hotel: {{ hotel.namaHotel }}</h5>
+            <h5>Nama Hotel: {{ hotel.nama_hotel }}</h5>
             <!-- <img src='{{ hotel.review }}' class="d-block w-100" style="border-radius:10px" alt=""> -->
             <ul>Image: {{ hotel.gambar }}</ul>
             <ul>Harga 1 Tamu:  {{ hotel.harga }}</ul>

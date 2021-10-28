@@ -3,6 +3,8 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('detail', pilih_negara, name='pilih_negara'),
-    # path('json', json, name='json'),
+    path('malaysia.html/', malaysia, name='malaysia'),
+    path('singapore.html/', singapore, name='singapore'),
+    path('thailand.html/', thailand, name='thailand'),
+    path('delete/<regulasi_id>', delete, name='delete'),
 ]

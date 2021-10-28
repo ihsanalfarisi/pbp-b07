@@ -26,4 +26,7 @@ urlpatterns = [
     path('info-hotel/', include('info_hotel.urls')),
     path('artikel/', include('artikel_page.urls')),
     path('regulasi/', include('regulasi.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

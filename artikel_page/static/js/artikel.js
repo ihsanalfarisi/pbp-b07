@@ -14,7 +14,7 @@ $(document).ready(function(){
             $("#article").append(`
             <div class="card bg-light">
                 <div class="view overlay hm-yellow-slight">
-                  <img src="/media/${hasil[latest].fields.gambar}" style="width: 1043px; height: 350px" class="card-img opacity-25" alt="...">
+                  <img src="${hasil[latest].fields.gambar}" style="width: 1043px; height: 350px" class="card-img opacity-25" alt="...">
                   <div class="card-img-overlay text-center">
                     <br>
                     <h3 class="display-6">${hasil[latest].fields.judul}</h3>
@@ -33,7 +33,7 @@ $(document).ready(function(){
               <div class="col-md-6">
               <div class="card" style="width: 32rem;">
                 <div class="view overlay hm-yellow-slight">
-                  <img src="/media/${hasil[i].fields.gambar}" style="width: 510px; height: 300px" class="card-img-top" alt="...">
+                  <img src="${hasil[i].fields.gambar}" style="width: 510px; height: 300px" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title mb-0">${hasil[i].fields.judul}</h5>
                     <p class="mb-1 text-muted">${hasil[latest].fields.date_published}</p>

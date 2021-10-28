@@ -17,7 +17,7 @@ def add_artikel(request):
     if (request.method == "POST"):
         form = ArtikelForm(request.POST or None, request.FILES) 
         if (form.is_valid()):
-            form.instance.penulis = request.user.username #https://stackoverflow.com/questions/5871730/how-to-upload-a-file-in-django
+            form.instance.penulis = request.user.username
             form.save()
     return render(request, 'artikel_form.html')
 
@@ -33,5 +33,3 @@ def get_artikel2(request, id):
 def json(request):
     data = serializers.serialize('json', Artikel.objects.only('judul', 'isi', 'deskripsi', 'penulis', 'date_published'))
     return HttpResponse(data, content_type="application/json")
-
-# values_list('judul', 'isi', 'deskripsi', 'penulis', 'time_published')

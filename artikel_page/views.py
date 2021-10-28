@@ -14,9 +14,9 @@ def index(request):
 
 @login_required(login_url = settings.LOGIN_URL)
 def add_artikel(request):
-    form = ArtikelForm(request.POST or None) 
-    if (form.is_valid and request.method == 'POST'):
-        form.instance.penulis = request.user.username
+    form = ArtikelForm(request.POST or None, request.FILES) 
+    if (form.is_valid() and request.method == 'POST'):
+        form.instance.penulis = request.user.username #https://stackoverflow.com/questions/5871730/how-to-upload-a-file-in-django
         form.save()
     return render(request, 'artikel_form.html')
 

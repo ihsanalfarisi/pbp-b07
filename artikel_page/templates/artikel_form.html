@@ -7,7 +7,7 @@
 {% block content %}
 {% load static %}
     <div class="container py-2">
-      <form id="form-article" action="" method="POST">
+      <form id="form-article" action="{% url add_artikel %}" method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         <h3 class="mt-5 text-center">Tulis Artikel</h3>
         <br>
@@ -18,7 +18,7 @@
         <br>
         <div class="ms-3 col-11,5 me-3">
           <label for="formFile" class="form-label">Gambar</label>
-          <input class="form-control" type="file" name="gambar" id="formFile">
+          <input class="form-control" type="file" name="gambar" id="gambar">
         </div>
         <br>
         <div class="ms-3 col-11,5 me-3">

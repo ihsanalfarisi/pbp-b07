@@ -9,6 +9,7 @@ $(document).ready(function(){
         url: pathname+'json', 
         dataType: 'json',
         success: function(hasil){
+          if(hasil.length>0){
             var latest = hasil.length-1
             $("#article").append(`
             <div class="main-article p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -39,6 +40,20 @@ $(document).ready(function(){
               `);
             }
             $("#article").append('</div>')
+          }else{
+            $("#article").append(`
+            <div class="d-flex justify-content-sm-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="grey" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+                <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z"></path>
+                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"></path>
+              </svg>
+            </div>
+            <br>
+            <p class="text-muted fst-italic fs-1 text-center">
+              Artikel Belum Tersedia
+            </p>`)
+          }
+            
       }})
     },500);}
 
@@ -63,10 +78,10 @@ $(document).ready(function(){
                 </div>
               </header>
               <main id="article" class="container py-4 px-5">
-                <div class="border-bottom">
-                  <div class="ratio" style="--bs-aspect-ratio: 75%;">
-                    <img src="/${hasil[0].fields.gambar}" id="artikel-gambar" class="img-fluid" alt="...">
-                  </div>
+                <div id="image-div" class="border-bottom">
+                  
+                  <img src="/${hasil[0].fields.gambar}" id="artikel-gambar" class="img-fluid rounded ratio" style="--bs-aspect-ratio: 75%;" alt="...">
+                  
                 </div>
                 <div class="border-bottom">
                   <p>${hasil[0].fields.isi}</p>

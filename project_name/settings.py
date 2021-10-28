@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_dropbox_storage',
     'main',
     'stat_covid',
     'crispy_forms',
@@ -117,6 +118,9 @@ if PRODUCTION:
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=600, ssl_require=True
     )
+    DEBUG = False
+    SECURE_SSL_REDIRECT = True
+
 
 
 # Password validation
@@ -182,3 +186,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+if PRODUCTION:
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    DROPBOX_OAUTH2_TOKEN = 'sl.A7MqzD3Wi6wY1NYfnsbeF1GXSnFp_bnGr5c5Xg89dYIWOnwulZVsARVJapnlQ7g-IbGciwxLAqu83QCpjkOnMBTcJmqcp3k-I9CCdy6-JbcgDjbOgYk53HO1O1RFcchW3xHTJz4'
+    DROPBOX_ROOT_PATH = '/media'

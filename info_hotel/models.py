@@ -7,3 +7,4 @@ class Hotel(models.Model):
     foto = models.ImageField() 
     harga = models.CharField(max_length=50) 
     review = models.TextField()
+

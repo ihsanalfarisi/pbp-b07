@@ -174,7 +174,10 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # You can remove this if it causes problems on your setup.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-LOGIN_URL = '/login/'
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MEDIA_URL = '/media/' 
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')

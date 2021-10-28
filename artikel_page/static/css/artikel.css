@@ -3,3 +3,8 @@
     background-position: center;
     background-size: cover;
 }
+#image-div{
+    height: 355px;
+    padding: 10;
+    margin: 0;
+}

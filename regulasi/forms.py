@@ -5,4 +5,4 @@ from django import forms
 class CountryForm(forms.ModelForm):
     class Meta:
         model = Regulasi
-        fields = "__all__"
+        fields = ('negara',)

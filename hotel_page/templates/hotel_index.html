@@ -14,40 +14,45 @@
             <p class="fs-5 text-muted">Temukan hotel karantina terbaik di negara tujuanmu! Kenyamananmu adalah prioritas kami.</p>
             <!-- <a type="button" href='search' class="btn btn-success">Cari Hotel!</a> -->
         </div>
-
-        <div class="input-group" style="text-align: center;">
-            <form method="POST" autocomplete="off">
-                <div class="autocomplete">
-                {% csrf_token %}
-                  <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
-                  <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
-                </div>
-                <input type="submit">
-            </form>
-            <!-- <h3 style="text-align: center"> Hotel Karantina Terbaik di {{Country}}</h3> -->
-        </div>
     </header>
     
-    <div>
+    <div>      
+      <div class="input-group w-100">
+        <form class="mx-auto" method="POST" autocomplete="off">
+          <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
+          <div class="autocomplete">
+            {% csrf_token %}
+            <!-- <form action=" " method="POST">
+              {% csrf_token %} {{form.as_p}}
+              <input type="submit" class="button" value="Submit" />
+            </form> -->
+            <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+          </div>
+          <input type="submit">
+        </form>
+      </div>
       <div class="row">
-        <h3 style="text-align: center"> Hotel Karantina Terbaik di {{Country}}</h3>
+        <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+          Hotel Karantina Terbaik di <span style="color: rgb(255, 0, 149);"><strong>{{ Country }}</strong></span>
+        </h3>
+        <br><br><br>
         {% for hotel in hotels %}
-        {% if hotel.country == Country %}
-          <div class="col-lg-6 col-md-6"> 
-            <div class="card" style="margin-bottom: 30px;">
-              <div class="card-header">
-                {{ hotel.country }}
-              </div>
-              <img class="card-img-top" src="/media/{{hotel.foto}}" alt="hotel image">
-              <div class="card-body">
-                <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
-                <p class="card-text">Harga: {{ hotel.harga }}</p>
-                <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
+          {% if hotel.country == Country %}
+            <div class="col-lg-6 col-md-6"> 
+              <div class="card" style="margin-bottom: 30px;">
+                <div class="card-header">
+                  {{ hotel.country }} 
+                </div>
+                <img class="card-img-top" src="/media/{{hotel.foto}}" alt="hotel image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
+                  <p class="card-text">Harga: {{ hotel.harga }}</p>
+                  <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
+                </div>
               </div>
             </div>
-          </div>
-        {% endif %}
-      {% endfor %} 
+          {% endif %}
+        {% endfor %} 
       </div>
     </div>
 </div>

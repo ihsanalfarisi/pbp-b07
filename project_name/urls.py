@@ -23,7 +23,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('stat-covid/', include('stat_covid.urls')),
     path('article/', include('artikel_page.urls')),
-    path('info-hotel/', include('info_hotel.urls')),
     path('artikel/', include('artikel_page.urls')),
     path('regulasi/', include('regulasi.urls')),
     path('hotel/', include('hotel_page.urls')),

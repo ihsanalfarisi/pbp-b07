@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'stat_covid',
     'crispy_forms',
     'artikel_page',
-    'info_hotel',
     'regulasi',
     'hotel_page',
 ]

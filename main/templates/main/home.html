@@ -7,10 +7,11 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
 
 <div class="container-fluid">
   <div class="col">
-    <div class="row ">
+    <div id="judul-gambar" class="row ">
       <div class="col-sm-5 judul">
         <h1 class="mt-5 ml-5">Safe Flight</h1>
         <h2 class="mt-3">stay happy, stay healthy</h2>
@@ -53,7 +54,7 @@
         </div>
       </div>
     </div>
-      <div class="container mt-5">
+    <div id="data" class="container mt-5">
         <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Data Statistik Covid-19 Dunia</h1>
         <div class="accordion" id="accordion">
           <div class="accordion-item">
@@ -62,7 +63,7 @@
                 Confirmed Cases
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordiond">
               <div class="accordion-body">
                 <div id="confirmedCases" class="container"></div>
               </div>
@@ -74,7 +75,7 @@
                 Vaccinated
               </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordiond">
               <div class="accordion-body">
                 <div id="vaccinated" class="container"></div>
               </div>
@@ -93,21 +94,44 @@
             </div>
           </div>
       </div>
-      <div class="container">
-        <h1 class="homedua">Apa Kata Mereka?</h1>
-        <div class="container shadow-lg p-3 mb-5 bg-body mt-2" style="border-radius: 30px">
-          <div class="container mx-5 my-5">
-          <h3>"Email adalah singkatan dari Elektronik Mail atau dalam bahasa Indonesia disebut Surat Elektronik merupakan
-            sarana dalam mengirim surat yang dilakukan melalui media internet. Media internet yang dimaksud bisa melalui
-            komputer atau handphone yang memiliki akses internet."</h3>
-            <br>
-            <h4>-Anonymous</h4>
-          </div>
+    </div>
+    <div id="fitur" class="container mt-5">
+      <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Fitur Kami</h1>
+      <div class="row gap-3">
+      {% for fiturr in fitur %}
+      <div class="col card" style="width: 18rem; ">
+        <h2 style="text-align:center; padding-top:30px">{{ fiturr.nama }}</h2>
+        {% if fiturr.nama == 'Info Hotel Karantina' %}
+        {% else %}
+        <div style="line-height:230%;">
+          <br>
+        </div>
+        {% endif %}
+        <h1 class="{{ fiturr.icon }}" style="text-align:center; padding-top:20px"></h1>
+        <div class="card-body d-flex flex-column" style="text-align: center">
+          <p class="card-text">{{ fiturr.deskripsi }}</p>
+          <a class="btn btn-primary mt-auto" style="align: center" href="{{ fiturr.link }}">Menuju Link</a>
+        </div>
+      </div>
+
+      {% endfor %}
+      </div>
+    </div>
+    <div id="feedback" class="container">
+      <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Apa Kata Mereka?</h1>
+      <div class="container shadow-lg p-3 mb-5 bg-body mt-2" style="border-radius: 30px">
+        <div class="container mx-5 my-5">
+        <h3>"Email adalah singkatan dari Elektronik Mail atau dalam bahasa Indonesia disebut Surat Elektronik merupakan
+          sarana dalam mengirim surat yang dilakukan melalui media internet. Media internet yang dimaksud bisa melalui
+          komputer atau handphone yang memiliki akses internet."</h3>
+          <br>
+          <h4>-Anonymous</h4>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/main.js' %}"></script>

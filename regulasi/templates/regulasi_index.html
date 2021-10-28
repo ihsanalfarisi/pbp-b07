@@ -1,39 +1,32 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block meta %}
-    <title>Info Regulasi</title>
-{% endblock meta %}
-
-{% block content %}
-    <div class="container py-3">
-        <header>
-            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                <h1 class="display-5 fw-normal">Info Regulasi</h1>
-                <p class="fs-5 text-muted">Cari tahu mengenai info regulasi negara destinasimu disini!</p>
-                <a>
-                    <div class="col-md-3" style="margin: auto; padding-top: 50px;">
-                        <form action=" " method="POST">
-                            {% csrf_token %}
-                            {{form.as_p}}
-                            <input type="submit" class="button" value="Submit">
-                        </form>
-                    </div>
-                </a>
-            </div>
-        </header>
-
-        {% for i in regulasi %}
-        <a
-          class="btn btn-danger"
-          href="{% url 'delete' i.id %}"
-          role="button"
-          >Hapus</a
-        >
-        <div id="{{ i.negara }}" data-nama="{{ i.negara }}"></div>
-        {% endfor %}
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{% static 'info_regulasi.js' %}"></script>
+{% extends 'base.html' %} {% load static %} {% block meta %}
+<title>Info Regulasi</title>
+{% endblock meta %} {% block content %}
+<div class="container py-3">
+  <header>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-5 fw-normal">Info Regulasi</h1>
+      <p class="fs-5 text-muted">
+        Cari tahu mengenai info regulasi negara destinasimu disini!
+      </p>
+      <a>
+        <div class="col-md-3" style="margin: auto; padding-top: 50px">
+          <form action=" " method="POST">
+            {% csrf_token %} {{form.as_p}}
+            <input type="submit" class="button" value="Submit" />
+          </form>
+        </div>
+      </a>
     </div>
+  </header>
+
+  {% for i in regulasi %}
+  <a class="btn btn-danger" href="{% url 'delete' i.id %}" role="button"
+    >Hapus</a
+  >
+  <div id="{{ i.negara }}" data-nama="{{ i.negara }}"></div>
+  {% endfor %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'info_regulasi.js' %}"></script>
+</div>
 {% endblock content %}

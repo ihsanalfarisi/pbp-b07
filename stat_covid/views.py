@@ -14,7 +14,7 @@ class StatCovid(View):
     def get(self, request):
         form = CountryForm()
         countries = Country.objects.all()
-
+        
         # ----------------------------------
 
         country_list = []

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'artikel_page',
     'info_hotel',
     'regulasi',
+    'support_page',
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'

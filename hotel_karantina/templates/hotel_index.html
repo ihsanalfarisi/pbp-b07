@@ -4,6 +4,12 @@
 {% block meta %}
   <title>Info Hotel Karantina</title>
   <!-- <link rel="stylesheet" href="{% static 'css/hotel.css' %}"> -->
+  <style>
+    .card:hover {
+    transform: scale(1.025);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+  }
+  </style>
 {% endblock meta %} 
 {% block content %}
 
@@ -20,22 +26,24 @@
       <div class="input-group w-100">
         <form class="mx-auto" method="POST" autocomplete="off">
           <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
-          <div class="autocomplete">
+          <div class="autocomplete" style="text-align: center;">
             {% csrf_token %}
             <!-- <form action=" " method="POST">
               {% csrf_token %} {{form.as_p}}
               <input type="submit" class="button" value="Submit" />
             </form> -->
             <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+            <input type="submit" class="btn btn-secondary" value="Pilih" />
           </div>
-          <input type="submit">
         </form>
       </div>
       <div class="row">
-        <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
-          Hotel Karantina Terbaik di <span style="color: rgb(255, 0, 149);"><strong>{{ Country }}</strong></span>
-        </h3>
-        <br><br><br>
+        {% if Country is not None %}
+          <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+            Hotel Karantina Terbaik di <span style="color: rgb(255, 0, 149);"><strong>{{ Country }}</strong></span>
+          </h3>
+          <br><br><br>
+        {% endif %}
         {% for hotel in hotels %}
           {% if hotel.country == Country %}
             <div class="col-lg-6 col-md-6"> 
@@ -59,8 +67,8 @@
     </div>
 </div>
 
-<!-- <script>
-    $(document).ready(function autocomplete(inp, arr) {
+<script>
+    function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
       the text field element and an array of possible autocompleted values:*/
       var currentFocus;
@@ -155,7 +163,7 @@
       document.addEventListener("click", function (e) {
           closeAllLists(e.target);
       });
-    })
+    }
     
     /*An array containing all the country names in the world:*/
     var countries = ["Indonesia", "Singapore", "Thailand", "Malaysia"]
@@ -163,7 +171,7 @@
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById("myInput"), countries);
 </script>
-     -->
+
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'info_hotel.js' %}"></script> -->
 {% endblock content %}

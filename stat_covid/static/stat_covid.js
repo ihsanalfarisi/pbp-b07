@@ -1,10 +1,12 @@
 $(document).ready(function () {
+  // Untuk popover bootstrap
   var popoverTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="popover"]')
   );
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl);
   });
+
   // Nambahain nama negara
   $.ajax({
     type: "GET",
@@ -12,8 +14,8 @@ $(document).ready(function () {
     success: function (data) {
       $("h5").each(function () {
         var code = $(this).data("code"); // atribut data-code
-        if (!data[code]) return;
-        $(this).html(data[code]["location"]);
+        if (!data[code]) return; // kalau tidak ada di return
+        $(this).html(data[code]["location"] + "<br/><br/>");
       });
     },
   });
@@ -25,12 +27,19 @@ $(document).ready(function () {
     success: function (data) {
       $("h3").each(function () {
         var code = $(this).data("code"); // atribut data-code
-        if (!data[code]) return;
+
+        if (!data[code]) return; // kalau tidak ada di return
+        if (!data[code]["data"]) return; // kalau tidak ada di return
         var length = data[code]["data"].length;
+
+        if (!data[code]["data"][length - 1]["total_cases"]) return; // kalau tidak ada di return
         var cases = data[code]["data"][length - 1]["total_cases"];
+
+        if (!data[code]["data"][length - 1]["date"]) return; // kalau tidak ada di return
         var date = data[code]["data"][length - 1]["date"];
+
         $(this).html(
-          "<br/>Coronavirus Cases:<br/>" +
+          "Coronavirus Cases:<br/>" +
             numberWithCommas(cases) +
             "<br/><br/><br/><span class = 'fs-6'>Last updated on " +
             date +
@@ -40,33 +49,13 @@ $(document).ready(function () {
     },
   });
 
-  // ngeformat angka dari https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+  // ngasih , di angka
+  // diambil dari https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  // $("#addButton").click(function () {
-  //   var serializedData = $("#addCountryForm");
-  //   alert("berhasil 1");
-  //   $.ajax({
-  //     url: $("#addCountryForm").data("url"),
-  //     data: serializedData,
-  //     type: "post",
-  //     success: function (response) {
-  //       alert("berhasil 2");
-  //       $("#details-list").append(
-  //         '<div class="col-4 mb-4"><div class="card text-center" style="height: 400px"><h5 class="card-header" data-code="' +
-  //           response.country.id +
-  //           '"></h5><div class="card-body"><h3 data-code="' +
-  //           response.country.id +
-  //           '"></h3></div><div class="card-footer" style="padding: 0px 0px 0px 0px"><div class="d-grid gap-2"><buttontype="button"class="btn btn-light btn-block"data-bs-toggle="modal"data-bs-target="#confirmedCasesModal"id="details"data-code="' +
-  //           response.country.id +
-  //           '">Details</button></div></div></div></div>'
-  //       );
-  //     },
-  //   });
-  // });
-
+  // copy text saat di klik
   $("#countryList").on("click", "#countryName", function () {
     var $temp = $("<input>");
     $("body").append($temp);
@@ -75,6 +64,7 @@ $(document).ready(function () {
     $temp.remove();
   });
 
+  // ubah warna saat di klik
   $("#countryList").on("mousedown", "#countryName", function () {
     $("#" + $(this).data("id")).attr(
       "class",
@@ -82,6 +72,7 @@ $(document).ready(function () {
     );
   });
 
+  // balikin warna setelah di klik
   $("#countryList").on("mouseup", "#countryName", function () {
     $("#" + $(this).data("id")).attr(
       "class",

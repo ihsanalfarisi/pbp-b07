@@ -25,6 +25,7 @@ urlpatterns = [
     path('article/', include('artikel_page.urls')),
     path('artikel/', include('artikel_page.urls')),
     path('regulasi/', include('regulasi.urls')),
+    path('support-page/', include('support_page.urls')),
     path('hotel/', include('hotel_page.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'artikel_page',
     'regulasi',
+    'support_page',
     'hotel_page',
 ]
 

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block meta %}
+    <title>Tambah Keluhan</title>
+{% endblock meta %}
+
+{% block content %}
+{% load static %
+<link rel="stylesheet" href="{% static 'css/support.css' %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<div class="content">
+    <h1>Silakan Isi Formulir berikut</h1>
+    <div class="content-wrapper">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+
+    <br>
+    <div class="action">
+        <div class="support-content-wrapper">
+            <a href="/support-page/support_list/">
+                <div class="support-content">
+                <button type="button" class="btn btn-info">Lihat Keluhanmu</button>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

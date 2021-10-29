@@ -1,0 +1,162 @@
+.indexcontent {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.indexcontent-wrapper {
+    text-align: center;
+    padding: 3ch;
+    line-height: 2;
+}
+
+.indexcontent-wrapper:hover {
+    transform: scale(1.05);
+    transition: linear 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+.content {
+    height: auto;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 3rem;
+    flex-direction: column;
+}
+
+.content h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content-wrapper {
+    width: fit-content;
+    display: flex;
+}
+
+.content-wrapper input[type="text"] {
+    width: 10rem;
+    height: 2rem;
+    margin-bottom: 1rem;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.content-wrapper textarea {
+    width: 40rem;
+    height: 10rem;
+    margin-bottom: 1rem;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+    padding-left: 1ch;
+    padding-right: 1ch;
+}
+
+.content-wrapper label {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.content-wrapper input[type="submit"] {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14.5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.listcontent {
+    padding-top: 3rem;
+    min-height:auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.listcontent .content-grid {
+    margin-top: 2rem;
+}
+
+
+.card {
+    width: 300px;
+    height: 200px;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    
+    background-color: bisque;  
+}
+
+.card-didalam {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    text-align: center;
+    
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(212, 167, 167, 0.2);
+}
+
+.card:hover .card-didalam {
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 16px 0 #d9e786;
+}
+
+.card-cover, .card-isi {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cover {
+    background-color: #dda862;
+    color:white;
+}
+
+.card-isi {
+    background-color: #37575f;
+    color: white;
+    transform: rotateY(180deg);
+    flex-direction: column;
+}

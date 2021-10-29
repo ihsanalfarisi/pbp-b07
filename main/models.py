@@ -5,3 +5,7 @@ class Fitur(models.Model):
     deskripsi = models.TextField()
     icon = models.CharField(max_length=30)
     link = models.CharField(max_length=30)
+
+class Ulasan(models.Model):
+    nama = models.CharField(max_length=30)
+    pesan = models.TextField()

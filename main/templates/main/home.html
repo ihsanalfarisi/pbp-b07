@@ -119,15 +119,14 @@
     </div>
     <div id="feedback" class="container">
       <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Apa Kata Mereka?</h1>
+      {% for ulas in ulasan %}
       <div class="container shadow-lg p-3 mb-5 bg-body mt-2" style="border-radius: 30px">
-        <div class="container mx-5 my-5">
-        <h3>"Email adalah singkatan dari Elektronik Mail atau dalam bahasa Indonesia disebut Surat Elektronik merupakan
-          sarana dalam mengirim surat yang dilakukan melalui media internet. Media internet yang dimaksud bisa melalui
-          komputer atau handphone yang memiliki akses internet."</h3>
-          <br>
-          <h4>-Anonymous</h4>
+        <div class="container" style="padding: 40px 40px 40px 40px;">
+          <h3 style="text-align:justify;">{{ ulas.pesan }}</h3><br>
+          <h4>-{{ ulas.nama }}</h4>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </div>

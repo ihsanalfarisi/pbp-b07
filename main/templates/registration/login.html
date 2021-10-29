@@ -9,11 +9,22 @@
 <!--Login-->
 <div class="container py-5">
     <h1>Login</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ login_form|crispy }}
-        <button class="btn btn-primary" type="submit">Login</button>
-    </form>
-    <p class="text-center">Don't have an account? <a href="/signup">Create an account</a>.</p>
+    <div class="container mb-3" style="padding:10px;">
+        <form action="" method="POST" class="form-control" style="text-align:justify">
+            {% csrf_token %}
+            {% for field in login_form %}
+            <div class="row">
+                <div class="col-md-2">
+                    {{ field.label_tag }}
+                </div>
+                <div class="col-md-10">
+                    {{ field }}
+                </div>
+            </div><br>
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+    <p class="text-center mt-4">Don't have an account? <a href="/signup">Create an account</a>.</p>
 </div>
 {% endblock %}

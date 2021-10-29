@@ -1,7 +1,7 @@
 from django import forms
-from .models import Hotel
+from .models import HotelKarantina
 
 class HotelForm(forms.ModelForm):
     class Meta:
-        model = Hotel
+        model = HotelKarantina
         fields = ('country',)

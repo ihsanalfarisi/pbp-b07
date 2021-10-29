@@ -9,6 +9,7 @@ class Country(models.Model):
     code = models.CharField(max_length=3, editable=False)
     code2 = models.CharField(max_length=2, editable=False)
 
+    # Meng-override save method agar code dan code2 akan diisi valuenya berdasarkan country_name
     def save(self, *args, **kwargs):
         country_list = []
         for country in pycountry.countries:
@@ -17,15 +18,7 @@ class Country(models.Model):
             self.code = pycountry.countries.get(name=self.country_name).alpha_3
             self.code2 = pycountry.countries.get(name=self.country_name).alpha_2.lower()
             super(Country, self).save(*args, **kwargs)
-
-
-    # @property
-    # def code(self):
-    #     country_list = []
-    #     for country in pycountry.countries:
-    #         country_list.append(country.name)
-    #     if (self.country_name in country_list):
-    #         return pycountry.countries.get(self.country_name).alpha_3        
+     
 
 
     

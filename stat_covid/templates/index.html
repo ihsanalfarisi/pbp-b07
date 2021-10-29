@@ -8,22 +8,21 @@
 />
 <link rel="stylesheet" href="{% static 'style.css' %}" />
 {% endblock meta %} {% block content %}
+<!-- Judul dan deskripsi -->
 <div class="container py-3">
   <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-5 fw-normal">Info Statistik</h1>
       <p class="fs-5 text-muted">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi eum
-        expedita cum voluptate neque aut. Minus, eveniet reiciendis suscipit
-        voluptas cupiditate quisquam voluptate enim molestiae voluptates autem
-        veritatis vero ipsum.
+        Dapatkan statistik COVID-19 di negara manapun yang ingin anda kunjungi
       </p>
     </div>
   </header>
 </div>
 
+<!-- Form -->
 <div class="container">
-  <div class="pt-5">
+  <div class="pt-4">
     {% if user.is_authenticated %}
     <form
       method="POST"
@@ -92,6 +91,7 @@
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
 
+  <!-- List negara -->
   <div class="mt-5">
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
@@ -104,7 +104,7 @@
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            Negara
+            List of countries
           </button>
         </h2>
         <div
@@ -213,13 +213,13 @@
         </div>
       </div>
     </div>
-    <!-- ----------------------------------------- -->
   </div>
 
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
   <!-- ----------------------------------------- -->
   <hr class="my-5" />
+  <!-- tombol edit -->
   <button
     class="btn btn-primary"
     type="button"
@@ -231,7 +231,7 @@
     Edit
   </button>
   <div class="row mt-3" id="details-list">
-    {% for country in user.country.all %}
+    {% for country in user.country.all reversed %}
     <div class="col-4 mb-4">
       <div class="card text-center">
         <!-- tombol delete -->
@@ -255,12 +255,24 @@
           alt="..."
           height="250px"
         />
-        <!-- harus h5 disini ama card-header -->
+        <!-- card negara -->
         <hr class="p-0 m-0" />
         <div class="card-body">
-          <h5 class="card-title fs-4 fonts" data-code="{{ country.code }}"></h5>
+          <h5 class="card-title fs-4 fonts" data-code="{{ country.code }}">
+            <!-- baru -->
+            <div class="placeholder-wave">
+              <span class="rounded placeholder col-6 bg-secondary"></span>
+              <br /><br />
+            </div>
+          </h5>
           <h3 data-code="{{ country.code }}" class="fs-2 fonts">
-            <div class="spinner-border text-secondary"></div>
+            <div class="rounded placeholder-wave">
+              <span class="rounded placeholder col-10 bg-secondary"></span>
+              <br />
+              <span class="rounded placeholder col-6 bg-secondary"></span
+              ><br /><br /><br />
+              <span class="rounded placeholder col-8 fs-6 bg-secondary"></span>
+            </div>
           </h3>
         </div>
         <div class="card-footer" style="padding: 0px 0px 0px 0px">

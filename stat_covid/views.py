@@ -10,7 +10,7 @@ import math
 
 # Create your views here.
 class StatCovid(View):
-
+    # Dijalankan saat ada request GET
     def get(self, request):
         form = CountryForm()
         countries = Country.objects.all()
@@ -28,6 +28,7 @@ class StatCovid(View):
         stop_2 = 2 * stop_1
         stop_3 = 3 * stop_1
         stop_4 = len(country_list)
+        # Membagi country_menjadi 4
         for i in range(stop_1):
             country_list_1.append(country_list[i])
         for i in range(stop_1, stop_2):
@@ -49,7 +50,7 @@ class StatCovid(View):
             }
         return render(request, 'index.html', response)
 
-    # gajadi dipake kayakny
+    # Dijalankan saat ada request POST
     def post(self, request):
         form = CountryForm(request.POST or None)
 
@@ -59,16 +60,15 @@ class StatCovid(View):
 
         if (request.method == "POST" and form.is_valid()):
             n = form.cleaned_data["country_name"]
+            # Yang dimasukkan terdapat didalam module pycountry
             if (n in country_list):
                 c = Country(country_name=n)
                 c.save()
                 request.user.country.add(c)
-
-            # new_data = form.save()
-            # return JsonResponse({'country': model_to_dict(new_data)}, status=200)
-            # return redirect('StatCovid')    
+    
         return redirect('StatCovid')
 
+# Untuk menghapus negara
 def deleteCountry(request, country_id):
     country = Country.objects.get(pk=country_id)
     country.delete()

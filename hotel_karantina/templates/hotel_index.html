@@ -60,7 +60,7 @@
 </div>
 
 <script>
-    function autocomplete(inp, arr) {
+    $(document).ready(function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
       the text field element and an array of possible autocompleted values:*/
       var currentFocus;
@@ -155,14 +155,14 @@
       document.addEventListener("click", function (e) {
           closeAllLists(e.target);
       });
-    }
+    })
     
     /*An array containing all the country names in the world:*/
     var countries = ["Indonesia", "Singapore", "Thailand", "Malaysia"]
     
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById("myInput"), countries);
-    </script>
+</script>
     
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'info_hotel.js' %}"></script> -->

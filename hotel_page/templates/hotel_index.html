@@ -6,7 +6,7 @@
 {% endblock meta %} 
 {% block content %}
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'css/hotel.css' %}">
 <div class="container py-3">
     <header>
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
@@ -43,10 +43,12 @@
                 <div class="card-header">
                   {{ hotel.country }} 
                 </div>
-                <img class="card-img-top" src="/media/{{hotel.foto}}" alt="hotel image">
+                <img class="card-img-top" src="{{ hotel.foto }}" alt="hotel image">
                 <div class="card-body">
                   <h5 class="card-title">{{ hotel.nama_hotel }}</h5>
                   <p class="card-text">Harga: {{ hotel.harga }}</p>
+                </div>
+                <div class="card-footer" style="text-align: center;">
                   <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
                 </div>
               </div>

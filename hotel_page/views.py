@@ -1,11 +1,11 @@
 from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
-from .models import Hotel
-from .forms import HotelForm
+from .models import HotelKarantina
+# from .forms import HotelForm
 
 # Create your views here.
 
 def index(request):
-    hotels = Hotel.objects.all()
+    hotels = HotelKarantina.objects.all()
     # hotel_country = [] 
     # valid_country = ["Singapore", "Malaysia", "Thailand", "Indonesia"] 
 

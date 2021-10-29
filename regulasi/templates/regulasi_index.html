@@ -2,17 +2,33 @@
 <title>Info Regulasi</title>
 {% endblock meta %} {% block content %}
 <div class="container py-3">
+  <head>
+    <style>
+      form {
+        text-align: center;
+      }
+      .form label {
+        text-align: center;
+      }
+      input[type=text] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+
   <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-5 fw-normal">Info Regulasi</h1>
       <p class="fs-5 text-muted">
-        Cari tahu mengenai info regulasi negara destinasimu disini!
+        Cari tahu mengenai info regulasi Covid-19 negara destinasimu disini!
       </p>
       <a>
-        <div class="col-md-3" style="margin: auto; padding-top: 50px">
+        <div class="col-md-3" style="margin: auto; padding-top: 50px; padding-bottom: 50px;">
           <form action=" " method="POST">
             {% csrf_token %} {{form.as_p}}
-            <input type="submit" class="button" value="Submit" />
+            <input type="submit" class="btn btn-secondary" value="Pilih" />
           </form>
         </div>
       </a>
@@ -20,10 +36,9 @@
   </header>
 
   {% for i in regulasi %}
-  <a class="btn btn-danger" href="{% url 'delete' i.id %}" role="button"
-    >Hapus</a
-  >
+  <a class="btn btn-secondary" href="{% url 'delete' i.id %}" role="button" style="padding: 0%; width: 100%;">Hapus</a>
   <div id="{{ i.negara }}" data-nama="{{ i.negara }}"></div>
+  <br>
   {% endfor %}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

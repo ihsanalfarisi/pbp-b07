@@ -63,4 +63,10 @@ $(document).ready(function(){
             
       }})
     },500);}
+
+    $("#need-login").click(function(e){
+      e.preventDefault();
+      alert('Harap login terlebih dahulu untuk menulis artikel');
+  });
+
   });

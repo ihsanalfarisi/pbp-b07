@@ -23,6 +23,18 @@
             </div><br>
             {% endfor %}
             <button class="btn btn-primary" type="submit">Masuk</button>
+            <p></p>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% if messages %}
+            {% for message in messages %}
+            {% endfor %}
+            {% endif %}
+            {% endif %}
         </form>
     </div>
     <p class="text-center mt-4">Belum memiliki akun? <a href="/signup">Silakan membuat akun</a>.</p>

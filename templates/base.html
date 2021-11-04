@@ -33,7 +33,7 @@
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle me-5 mr-2 ms-3"
+              class="nav-link dropdown-toggle me-5 ms-3"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -58,7 +58,7 @@
           </li>
           {% if user.is_authenticated %}
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown me-4">
             <a
               class="nav-link dropdown-toggle me-5 ms-3"
               href="#"
@@ -76,8 +76,21 @@
 
           {% else %}
 
-          <li class="nav-item">
-            <a class="nav-link me-5 ms-3" href="/login">Masuk</a>
+          <li class="nav-item dropdown me-4">
+            <a
+                    class="nav-link dropdown-toggle me-5 ms-3"
+                    href="#"
+                    id="navbarDropdown3"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+            >
+              Masuk
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <li><a class="dropdown-item" href="/login">Masuk</a></li>
+              <li><a class="dropdown-item" href="/signup">Registrasi</a></li>
+            </ul>
           </li>
 
           {% endif %}

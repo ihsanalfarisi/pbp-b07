@@ -10,20 +10,37 @@
 <div class="container py-5">
     <h1>Registrasi</h1>
     <div class="container mb-3" style="padding:10px;">
-    <form action="" method="POST" class="form-control">
-        {% csrf_token %}
-        {% for field in register_form %}
-        <div class="row" style="">
-            <div class="col-md-2">
-                {{ field.label_tag }}
+        <form action="" method="POST" class="form-control">
+            {% csrf_token %}
+            {% for field in register_form %}
+            <div class="row" style="">
+                <div class="col-md-2">
+                    {{ field.label_tag }}
+                </div>
+                <div class="col-md-10">
+                    {{ field }}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% else %}
+                    <p></p>
+                    {% endif %}
+                </div>
             </div>
-            <div class="col-md-10">
-                {{ field }}
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Registrasi</button>
+            <p></p>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
             </div>
-        </div><br>
-        {% endfor %}
-        <button class="btn btn-primary" type="submit">Registrasi</button>
-    </form>
+            {% endfor %}
+            {% if messages %}
+            {% for message in messages %}
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+        </form>
     </div>
     <p class="text-center mt-4">Jika sudah memiliki akun, silakan <a href="/login">masuk</a>.</p>
 </div>

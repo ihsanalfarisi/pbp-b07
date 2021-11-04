@@ -19,27 +19,78 @@
   </head>
 
   <header>
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-5 fw-normal">Info Regulasi</h1>
-      <p class="fs-5 text-muted">
-        Cari tahu mengenai info regulasi Covid-19 negara destinasimu disini!
+    <div class="pricing-header p-3 pb-md-4 mx-auto">
+      <h1 class="display-5 fw-normal text-center">Info Regulasi</h1>
+      <p class="fs-5 text-muted text-center">
+        Cari tahu mengenai regulasi Covid-19 negara destinasimu disini!
       </p>
+      <h6 class="fs-6 text-muted text-center">
+        Pilihan negara: Malaysia, Singapore, Thailand
+      </h6>
       <a>
-        <div class="col-md-3" style="margin: auto; padding-top: 50px; padding-bottom: 50px;">
-          <form action=" " method="POST">
-            {% csrf_token %} {{form.as_p}}
-            <input type="submit" class="btn btn-secondary" value="Pilih" />
+        {% if user.is_authenticated %}
+          <form action=" " method="POST" style="margin-top: 50px;" >
+            <div class="row justify-content-center">
+              <div class="col-5 ps-0 pe-1 margin-bottom: 50px">
+                {% csrf_token %} {{form.as_p}}
+              </div>
+              <div class="col-1 px-0 pe-0">
+                <button type="submit" class="btn btn-secondary" id="addButton" style="margin-top: 23px;" >
+                  Pilih
+                </button>
+              </div>
+            </div>
           </form>
-        </div>
+          <br><br>
+          <div class="text-left" >
+            {% for i in regulasi %}
+            <div id="{{ i.negara }}" data-nama="{{ i.negara }}" ></div>
+            <a class="btn btn-secondary" href="{% url 'delete' i.id %}" role="button" style="padding: 0%; width: 100%;">Hapus</a>
+            <br><br>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-primary d-flex align-items-center" role="alert" style="border: 5px; margin: 45px;">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+              viewBox="0 0 16 16"
+              role="img"
+              aria-label="Warning:"
+            >
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </svg>
+            <div>Login terlebih dahulu</div>
+          </div>
+          <form action=" " method="POST">
+            <fieldset disabled>
+              <div class="row justify-content-center">
+                <div
+                  class="col-5 ps-0 pe-1"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="hover focus"
+                  data-bs-placement="bottom"
+                  data-bs-content="Login terlebih dahulu"
+                >
+                  {% csrf_token %} {{form.as_p}}
+                </div>
+                <div class="col-1 px-0 pe-0">
+                  <button type="submit" class="btn btn-secondary" id="addButton" style="margin-top: 23px;" >
+                    Pilih
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        {% endif %}
       </a>
     </div>
   </header>
-
-  {% for i in regulasi %}
-  <a class="btn btn-secondary" href="{% url 'delete' i.id %}" role="button" style="padding: 0%; width: 100%;">Hapus</a>
-  <div id="{{ i.negara }}" data-nama="{{ i.negara }}"></div>
-  <br>
-  {% endfor %}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{% static 'info_regulasi.js' %}"></script>

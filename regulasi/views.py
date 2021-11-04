@@ -1,10 +1,9 @@
 from django.shortcuts import redirect, render
 from .models import Regulasi
 from .forms import CountryForm
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url = '/login')
+# @login_required(login_url = '/login')
 
 # Create your views here.
 def index(request):

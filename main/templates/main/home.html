@@ -55,7 +55,7 @@
       </div>
     </div>
     <div id="data" class="container mt-5">
-        <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Data Statistik Covid-19 Dunia</h1>
+        <h1 class="judulData mt-5">Data Statistik Covid-19 Dunia</h1>
         <div class="accordion" id="accordion">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -96,18 +96,12 @@
       </div>
     </div>
     <div id="fitur" class="container mt-5">
-      <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Fitur Kami</h1>
+      <h1 class="judulFitur mt-5">Fitur Kami</h1>
       <div class="row gap-3">
       {% for fiturr in fitur %}
-      <div class="col card" style="width: 18rem; ">
-        <h2 style="text-align:center; padding-top:30px">{{ fiturr.nama }}</h2>
-        {% if fiturr.nama == 'Info Hotel Karantina' %}
-        {% else %}
-        <div style="line-height:230%;">
-          <br>
-        </div>
-        {% endif %}
-        <h1 class="{{ fiturr.icon }}" style="text-align:center; padding-top:20px"></h1>
+      <div class="col card" style="width: 18rem;">
+        <h2 class="namaFitur">{{ fiturr.nama }}</h2>
+        <h1 class="{{ fiturr.icon }} iconFitur"></h1>
         <div class="card-body d-flex flex-column" style="text-align: center">
           <p class="card-text">{{ fiturr.deskripsi }}</p>
           <a class="btn btn-primary mt-auto" style="align: center" href="{{ fiturr.link }}">Menuju Link</a>
@@ -118,7 +112,7 @@
       </div>
     </div>
     <div id="feedback" class="container">
-      <h1 class="mt-5" style="padding-top:50px; padding-bottom:30px; text-align:center">Apa Kata Mereka?</h1>
+      <h1 class="judulFeedback mt-5">Apa Kata Mereka?</h1>
       {% for ulas in ulasan %}
       <div class="container shadow-lg p-3 mb-5 bg-body mt-2" style="border-radius: 30px">
         <div class="container" style="padding: 40px 40px 40px 40px;">

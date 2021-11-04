@@ -21,7 +21,7 @@ $(document).ready(function(){
                     <p class="card-text mb-1 opacity-75">${hasil[latest].fields.date_published}</p>
                     <p class="card-text lead my-3">${hasil[latest].fields.deskripsi}</p>
                     <br>
-                    <a href="details2/${hasil[latest].pk}" class="btn btn-primary">Lanjutkan Membaca</a>
+                    <a href="details/${hasil[latest].pk}" class="btn btn-primary">Lanjutkan Membaca</a>
                   </div>
                 </div>
             </div>

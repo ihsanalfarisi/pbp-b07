@@ -1,74 +1,48 @@
-// function createAuto (i, elem) {
+$(document).ready(function(){
 
-//     var input = $(elem);
-//     var dropdown = input.closest('.dropdown');
-//     var listContainer = dropdown.find('.list-autocomplete');
-//     var listItems = listContainer.find('.dropdown-item');
-//     var hasNoResults = dropdown.find('.hasNoResults');
+    HotelPage()
 
-//     listItems.hide();
-//     listItems.each(function() {
-//          $(this).data('value', $(this).text() );  
-//          //!important, keep this copy of the text outside of keyup/input function
-//     });
-    
-//     input.on("input", function(e){
-        
-//         if((e.keyCode ? e.keyCode : e.which) == 13)  {
-//             $(this).closest('.dropdown').removeClass('open').removeClass('in');
-//             return; //if enter key, close dropdown and stop
-//         }
-//         if((e.keyCode ? e.keyCode : e.which) == 9) {
-//             return; //if tab key, stop
-//         }
+    document.getElementById("myInput").addEventListener("keyup",e=>{
+      HotelPage(e.target.value)
+    })
 
-      
-//         var query = input.val().toLowerCase();
-
-//         if( query.length > 0) {
-
-//             dropdown.addClass('open').addClass('in');
-
-//             listItems.each(function() {
-             
-//               var text = $(this).data('value');             
-//               if ( text.toLowerCase().indexOf(query) > -1 ) {
- 
-//                 var textStart = text.toLowerCase().indexOf( query );
-//                 var textEnd = textStart + query.length;
-//                 var htmlR = text.substring(0,textStart) + '<em>' + text.substring(textStart,textEnd) + '</em>' + text.substring(textEnd+length);
-//                 $(this).html( htmlR );               
-//                 $(this).show();
- 
-//               } else { 
-              
-//                 $(this).hide(); 
-              
-//               }
-//             });
-          
-//             var count = listItems.filter(':visible').length;
-//             ( count > 0 ) ? hasNoResults.hide() : hasNoResults.show();
-
-//         } else {
-//             listItems.hide();
-//             dropdown.removeClass('open').removeClass('in');
-//             hasNoResults.show();
-//         }
-//     });
-
-//   	listItems.on('click', function(e) {
-//         var txt = $(this).text().replace(/^\s+|\s+$/g, "");  //remove leading and trailing whitespace
-//         input.val( txt );
-//         dropdown.removeClass('open').removeClass('in');
-// 		});
-
-// }
-
-// $('.jAuto').each( createAuto );
-
-
-// $(document).on('focus', '.jAuto', function() {
-//      $(this).select();  // in case input text already exists
-// });
-  
+    function HotelPage(search="") {
+      var pathname = window.location.href
+      $.ajax({
+        url: pathname+'json', 
+        dataType: 'json',
+        success: function(res){
+          let hasil = res;
+          if(search!==""){
+            hasil = res.filter(item=>{
+              if(String(item).toLowerCase().includes(search.toLowerCase())){
+                return item
+              }
+            })
+          }
+          if(hasil.length>0){
+            html="";
+            hasil.forEach(item=>{
+              html = html + `
+              <div class="col-lg-6 col-md-6"> 
+                <div class="card" style="margin-bottom: 30px;">
+                  <div class="card-header">
+                    ${item.fields.country}
+                  </div>
+                  <img class="card-img-top" src="${item.fields.foto}" alt="hotel image">
+                  <div class="card-body">
+                    <h5 class="card-title"><strong>${item.fields.nama_hotel}</strong></h5>
+                    <p class="card-text"><strong>Harga: </strong>${item.fields.harga}</p>
+                  </div>
+                  <div class="card-footer" style="text-align: center;">
+                    <a href='${item.fields.detail}' class="btn btn-primary">Info Detail</a>
+                  </div>
+                </div>
+              </div>
+            `
+            })
+            document.querySelector(".result .row").innerHTML = html
+          }            
+      }})
+    }
+  });

@@ -10,11 +10,13 @@ $(document).ready(function(){
           if (!data[code]["data"]) return; // kalau tidak ada di return
           var length = data[code]["data"].length;
 
-          if (!data[code]["data"][length - 1]["total_cases"]) return; // kalau tidak ada di return
-          var cases = data[code]["data"][length - 1]["total_cases"];
-
-          if (!data[code]["data"][length - 1]["date"]) return; // kalau tidak ada di return
-          var date = data[code]["data"][length - 1]["date"];
+          if (!data[code]["data"][length - 1]["total_cases"]) { // kondisi total kasus belom ada di hari terakhir
+                var cases = data[code]["data"][length - 2]["total_cases"];
+                var date = data[code]["data"][length - 2]["date"];
+          } else {
+              var cases = data[code]["data"][length - 1]["total_cases"];
+              var date = data[code]["data"][length - 1]["date"];
+          }
 
           $(this).html(
                   '<iframe src="' +
@@ -23,7 +25,7 @@ $(document).ready(function(){
                     '<h3 class="mt-3" style="text-align:center;">Total Cases:</h3>' +
                     '<h4 style="text-align:center">' + numberWithCommas(cases) + '</h4>' +
                     '<br><h6 style="text-align:center">Last updated on ' + date +'</h6>'
-                );
+          );
       });
       $("#vaccinated").each(function() {
           var code = "OWID_WRL"; // atribut data-code
@@ -32,20 +34,22 @@ $(document).ready(function(){
           if (!data[code]["data"]) return; // kalau tidak ada di return
           var length = data[code]["data"].length;
 
-          if (!data[code]["data"][length - 1]["people_vaccinated"]) return; // kalau tidak ada di return
-          var vaccinated = data[code]["data"][length - 1]["people_vaccinated"];
-
-          if (!data[code]["data"][length - 1]["date"]) return; // kalau tidak ada di return
-          var date = data[code]["data"][length - 1]["date"];
+          if (!data[code]["data"][length - 1]["people_vaccinated"]) { // kondisi data vaksinasi belom ada di hari terakhir
+                var vaccinated = data[code]["data"][length - 2]["people_vaccinated"];
+                var date = data[code]["data"][length - 2]["date"];
+          } else {
+              var vaccinated = data[code]["data"][length - 1]["people_vaccinated"];
+              var date = data[code]["data"][length - 1]["date"];
+          }
 
           $(this).html(
                   '<iframe src="' +
                     "https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&facet=none&pickerSort=asc&pickerMetric=location&Metric=People+vaccinated&Interval=7-day+rolling+average&Relative+to+Population=true&Align+outbreaks=false&country=~OWID_WRL&hideControls=true" +
-                    '"loading="lazy"style="width: 100%; height: 600px; border: 0px none"id="stat-1"></iframe>' +
+                    '"loading="lazy"style="width: 100%; height: 600px; border: 0px none"id="stat-1"></iframe>'+
                     '<h3 class="mt-3" style="text-align:center;">Number of People who have been Vaccinated:</h3>' +
                     '<h4 style="text-align:center">' + numberWithCommas(vaccinated) + '</h4>' +
                     '<br><h6 style="text-align:center">Last updated on ' + date +'</h6>'
-                );
+          );
       });
       $("#confirmedDeaths").each(function() {
           var code = "OWID_WRL"; // atribut data-code
@@ -54,11 +58,13 @@ $(document).ready(function(){
           if (!data[code]["data"]) return; // kalau tidak ada di return
           var length = data[code]["data"].length;
 
-          if (!data[code]["data"][length - 1]["total_deaths"]) return; // kalau tidak ada di return
-          var deaths = data[code]["data"][length - 1]["total_deaths"];
-
-          if (!data[code]["data"][length - 1]["date"]) return; // kalau tidak ada di return
-          var date = data[code]["data"][length - 1]["date"];
+          if (!data[code]["data"][length - 1]["total_deaths"]) { // kondisi total kematian belom ada di hari terakhir
+                var deaths = data[code]["data"][length - 2]["total_deaths"];
+                var date = data[code]["data"][length - 2]["date"];
+          } else {
+              var deaths = data[code]["data"][length - 1]["total_deaths"];
+              var date = data[code]["data"][length - 1]["date"];
+          }
 
           $(this).html(
                   '<iframe src="' +
@@ -67,7 +73,7 @@ $(document).ready(function(){
                     '<h3 class="mt-3" style="text-align:center;">Total Deaths:</h3>' +
                     '<h4 style="text-align:center">' + numberWithCommas(deaths) + '</h4>' +
                     '<br><h6 style="text-align:center">Last updated on ' + date +'</h6>'
-                );
+          );
       });
     },
   });

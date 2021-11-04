@@ -39,7 +39,7 @@ $(document).ready(function(){
                     <p class="mb-1 text-muted">${hasil[latest].fields.date_published}</p>
                     <p class="card-text mb-auto">${hasil[i].fields.deskripsi}</p>
                     <br>
-                    <a href="details2/${hasil[i].pk}" class="btn btn-primary">Lanjutkan Membaca</a>
+                    <a href="details/${hasil[i].pk}" class="btn btn-primary">Lanjutkan Membaca</a>
                   </div>
                 </div>
               </div>

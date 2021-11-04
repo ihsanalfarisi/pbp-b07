@@ -27,5 +27,5 @@ def get_artikel(request, id):
     return render(request, 'artikel_detail.html', response)
 
 def json(request):
-    data = serializers.serialize('json', Artikel.objects.only('judul', 'isi', 'deskripsi', 'penulis', 'date_published'))
+    data = serializers.serialize('json', Artikel.objects.only('judul', 'isi', 'deskripsi', 'penulis', 'date_published')) #kyknya bisa dijadiin all gitu
     return HttpResponse(data, content_type="application/json")

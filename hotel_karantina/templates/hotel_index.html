@@ -18,52 +18,73 @@
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             <h1 class="display-5 fw-normal">Info Hotel Karantina</h1>
             <p class="fs-5 text-muted">Temukan hotel karantina terbaik di negara tujuanmu! Kenyamananmu adalah prioritas kami.</p>
-            <!-- <a type="button" href='search' class="btn btn-success">Cari Hotel!</a> -->
         </div>
     </header>
     
-    <div>      
-      <div class="input-group w-100">
-        <form class="mx-auto" method="POST" autocomplete="off">
+    <div>
+      {% if user.is_authenticated %}    
+        <div class="input-group w-100">        
+          <form class="mx-auto" method="POST" autocomplete="off">
           <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
           <div class="autocomplete" style="text-align: center;">
-            {% csrf_token %}
-            <!-- <form action=" " method="POST">
-              {% csrf_token %} {{form.as_p}}
-              <input type="submit" class="button" value="Submit" />
-            </form> -->
-            <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
-            <input type="submit" class="btn btn-secondary" value="Pilih" />
+              {% csrf_token %}
+              <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+              <input type="submit" class="btn btn-secondary" value="Pilih" />
           </div>
+          </form>
+        </div>
+      {% else %}
+        <div class="alert alert-primary d-flex align-items-center" role="alert" style="border: 5px; margin: 45px;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+            viewBox="0 0 16 16"
+            role="img"
+            aria-label="Warning:"
+          >
+            <path
+              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+          <div>Login terlebih dahulu</div>
+        </div>
+        <form action=" " method="POST">
+          <fieldset disabled>
+            <div class="row justify-content-center">
+              <div
+                class="col-8 ps-0 pe-1"
+                style="text-align: center;"
+                data-bs-toggle="popover"
+                data-bs-trigger="hover focus"
+                data-bs-placement="bottom"
+                data-bs-content="Login terlebih dahulu"
+              >
+                <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
+                <div class="autocomplete" style="text-align: center;">
+                    {% csrf_token %}
+                    <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+                    <input type="submit" class="btn btn-secondary" value="Pilih" />
+                </div>
+            </div>
+          </fieldset>
         </form>
-      </div>
-      <div class="row">
-        {% if Country is not None %}
+      {% endif %}
+
+      <div class="result">
+        <!-- {% if Country in "Singapore,Thailand,Malaysia,Indonesia" %} -->
           <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
             Hotel Karantina Terbaik di <span style="color: rgb(255, 0, 149);"><strong>{{ Country }}</strong></span>
           </h3>
           <br><br><br>
-        {% endif %}
-        {% for hotel in hotels %}
-          {% if hotel.country == Country %}
-            <div class="col-lg-6 col-md-6"> 
-              <div class="card" style="margin-bottom: 30px;">
-                <div class="card-header">
-                  {{ hotel.country }} 
-                </div>
-                <img class="card-img-top" src="{{ hotel.foto }}" alt="hotel image">
-                <div class="card-body">
-                  <h5 class="card-title"><strong>{{ hotel.nama_hotel }}</strong></h5>
-                  <p class="card-text"><strong>Harga: </strong>{{ hotel.harga }}</p>
-                </div>
-                <div class="card-footer" style="text-align: center;">
-                  <a href='{{ hotel.review }}' class="btn btn-primary">Info Detail</a>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %} 
+          <div class="row"></div>
+        <!-- {% else%}          
+          <h5 style="text-align: center; margin-top: 10px;">Harap ketik negara yang sesuai</h5>
+        {% endif %} -->
       </div>
+      <main id="hotel" class="container py-4 px-5"></main> 
     </div>
 </div>
 
@@ -171,7 +192,6 @@
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById("myInput"), countries);
 </script>
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{% static 'info_hotel.js' %}"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'info_hotel.js' %}"></script>
 {% endblock content %}

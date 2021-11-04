@@ -22,10 +22,6 @@ def add_artikel(request):
     return render(request, 'artikel_form.html')
 
 def get_artikel(request, id):
-    artikel= serializers.serialize("json",Artikel.objects.filter(id=id))
-    return HttpResponse(artikel, content_type="application/json")
-
-def get_artikel2(request, id):
     artikel_detail = get_object_or_404(Artikel, id = id)
     response = {'artikel_detail': artikel_detail}
     return render(request, 'artikel_detail.html', response)

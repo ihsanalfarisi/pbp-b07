@@ -4,9 +4,8 @@ from django.conf import settings
 
 # Create your models here.
 class Support(models.Model):
-    support_to = models.CharField(max_length=1024) 
-    negara_detail = models.CharField(max_length=1024)
-    support_dari = models.CharField(max_length=1024)
-    title = models.CharField(max_length=1024)
+    Negara_yang_dituju = models.CharField(max_length=1024) 
+    Lokasi_kejadian = models.CharField(max_length=1024)
+    Kejadian_secara_umum = models.CharField(max_length=1024)
     keluhan = models.TextField()
     saran = models.TextField()

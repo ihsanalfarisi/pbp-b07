@@ -15,11 +15,31 @@
 
 <div class="content">
     <h1>Silakan Isi Formulir berikut</h1>
+    <h5 style="margin-bottom: 40px;">FORMULIR KELUHAN</h5>
     <div class="content-wrapper">
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
+            <form>
+            <label for="Negara_yang_dituju">Negara yang dituju: </label>
+            <select id="Negara_yang_dituju" name="Negara_yang_dituju">
+                <option value="">Pilih Negara</option>
+            </select>
+            <br />
+
+            <label for="Lokasi_kejadian">Lokasi spesifik:</label>
+            <input id="Lokasi_kejadian" type="text" name="Lokasi_kejadian" maxlength="1024" required> <br />
+
+            <label for="Kejadian_secara_umum">Kejadian secara umum:</label>
+            <input id="Kejadian_secara_umum" type="text" name="Kejadian_secara_umum" maxlength="1024" required><br />
+
+            <label for="keluhan">Keluhan :</label>
+            <textarea id="keluhan" name="keluhan" ></textarea><br />
+
+            <label for="saran">Saran :</label>
+            <textarea id="saran" name="saran" ></textarea><br />
+
+            <input type="submit" value="Submit">
+            </form>
     </form>
     </div>
 
@@ -28,10 +48,13 @@
         <div class="support-content-wrapper">
             <a href="/support-page/support_list/">
                 <div class="support-content">
-                <button type="button" class="btn btn-info">Lihat Keluhanmu</button>
+                <button type="button" class="btn btn-secondary">Lihat Keluhanmu</button>
                 </div>
             </a>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'support.js' %}"></script>
+
 </div>
 {% endblock content %}

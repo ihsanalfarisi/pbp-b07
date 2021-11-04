@@ -1,0 +1,32 @@
+.judul  {
+    padding-top: 200px;
+    padding-left: 150px;
+}
+
+.judulData {
+    padding-top:50px;
+    padding-bottom:30px;
+    text-align:center
+}
+
+.judulFitur {
+    padding-top:50px;
+    padding-bottom:30px;
+    text-align:center
+}
+
+.namaFitur {
+    text-align:center;
+    padding-top:30px
+}
+
+.iconFitur {
+    text-align:center;
+    padding-top:20px
+}
+
+.judulFeedback {
+    padding-top:50px;
+    padding-bottom:30px;
+    text-align:center
+}

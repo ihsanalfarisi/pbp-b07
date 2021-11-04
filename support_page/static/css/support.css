@@ -11,18 +11,6 @@
     line-height: 2;
 }
 
-.indexcontent-wrapper:hover {
-    transform: scale(1.05);
-    transition: linear 0.3s;
-}
-
-
-
-
-
-
-
-
 
 
 .content {
@@ -87,15 +75,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 .listcontent {
     padding-top: 3rem;
     min-height:auto;
@@ -117,7 +96,7 @@
     margin-right: 1rem;
     margin-bottom: 1rem;
     
-    background-color: bisque;  
+    background-color: #c9c9c9;  
 }
 
 .card-didalam {
@@ -133,7 +112,7 @@
 
 .card:hover .card-didalam {
     transform: rotateY(180deg);
-    box-shadow: 0 8px 16px 0 #d9e786;
+    box-shadow: 0 8px 16px 0 #7284e9;
 }
 
 .card-cover, .card-isi {
@@ -150,12 +129,12 @@
 }
 
 .card-cover {
-    background-color: #dda862;
-    color:white;
+    background-color: #ececec;
+    color:rgb(0, 0, 0);
 }
 
 .card-isi {
-    background-color: #37575f;
+    background-color: #0266D3;
     color: white;
     transform: rotateY(180deg);
     flex-direction: column;

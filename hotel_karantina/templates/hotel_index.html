@@ -20,12 +20,14 @@
             <p class="fs-5 text-muted">Temukan hotel karantina terbaik di negara tujuanmu! Kenyamananmu adalah prioritas kami.</p>
         </div>
     </header>
-    
     <div>
       {% if user.is_authenticated %}    
         <div class="input-group w-100">        
           <form class="mx-auto" method="POST" autocomplete="off">
-          <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand | Indonesia</p>
+          <p style="text-align: center;">
+            <strong>Cari hotel karantina di negara berikut: </strong><br>
+            Singapore | Malaysia | Thailand | Indonesia
+          </p>
           <div class="autocomplete" style="text-align: center;">
               {% csrf_token %}
               <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">

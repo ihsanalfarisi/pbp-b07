@@ -44,7 +44,7 @@ $(document).ready(function(){
                     </div>
                     <div class="card-footer" style="padding: 0px 0px 0px 0px">
                       <div class="d-grid gap-2">
-                        <a href='${item.fields.detail}' class="btn btn-primary">Info Detail</a>
+                        <a href='${item.fields.detail}' class="btn btn-primary">Info Lengkap</a>
                       </div>                
                     </div><div class="card-footer" style="padding: 0px 0px 0px 0px">                      
                     </div>

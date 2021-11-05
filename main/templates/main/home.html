@@ -11,6 +11,24 @@
 
 <div class="container-fluid">
   <div class="col">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary alert-dismissable" role="alert">
+      {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% if messages %}
+    {% for message in messages %}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
     <div id="judul-gambar" class="row">
       <div class="col-sm-5 judul">
         <h1 class="mt-5 ml-5">Safe Flight</h1>

@@ -31,7 +31,7 @@
             <p></p>
             {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger alert-dismissable" role="alert">
                 {{ message }}
             </div>
             {% endfor %}
@@ -44,5 +44,8 @@
     </div>
     <p class="text-center mt-4">Jika sudah memiliki akun, silakan <a href="/login">masuk</a>.</p>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 {% endblock %}

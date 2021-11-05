@@ -81,4 +81,10 @@ $(document).ready(function(){
   function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+  // diambil dari https://stackoverflow.com/questions/43560532/showing-flash-messages-in-django-with-close-button
+  window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+  }, 5000);
 });

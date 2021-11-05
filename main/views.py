@@ -18,8 +18,9 @@ def register_request(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, "Registrasi berhasil.")
             return redirect("main:home")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
+        messages.error(request, "Registrasi mengalami kegagalan. Terdapat informasi yang tidak valid.")
     form = NewUserForm()
     return render (request=request, template_name="registration/signup.html", context={"register_form":form})
 
@@ -32,14 +33,16 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.info(request, f"Anda berhasil masuk sebagai {username}.")
                 return redirect("main:home")
             else:
-                messages.error(request,"Invalid username or password.")
+                messages.error(request,"Username atau password tidak valid.")
         else:
-            messages.error(request,"Invalid username or password.")
+            messages.error(request,"Username atau password tidak valid.")
     form = AuthenticationForm()
     return render(request=request, template_name="registration/login.html", context={"login_form":form})
 
 def logout_request(request):
     logout(request)
+    messages.info(request, "Anda berhasil keluar.")
     return redirect("main:home")

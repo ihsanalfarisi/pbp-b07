@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Get Swabbed!</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container py-3">
+        <header>
+            <div class="get-swabbed-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-5 fw-normal">Get Swabbed!</h1>
+                <p class="fs-5 text-muted">Banyak negara mengharuskan pendatang internasional melakukan tes Swab Covid-19 ketika mereka tiba di negara tersebut. 
+                    Anda dapat melihat fasilitas penyedia tes Swab Covid-19 di negara tujuan dengan memanfaatkan fitur Get Swabbed! ini.
+                    <br> <br> Informasi lainnya mengenai regulasi di negara tujuan dapat dibaca di Info Regulasi.</p>
+            </div>
+                <!--Make sure the form has the autocomplete function switched off:-->
+                <form id="countryForm" method="POST" class="form-inline" autocomplete="off" action="/action_page.php">
+                    {% csrf_token %}
+                    <div class="autocomplete" style="width:350px;">
+                        <p>Pilih negara tujuan berikut: Malaysia | Singapore | Thailand</p>
+                        <input id="myInput" type="text" name="myCountry" placeholder="Country">
+                    </div>
+                    <input type="submit">
+                </form>
+        </header>
+        <body>
+          <div class="container py-3" id="countriesTable">
+            <style>
+                table {
+                  font-family: arial, sans-serif;
+                  border-collapse: collapse;
+                  width: 100%;
+                }
+                td, th {
+                  border: 1px solid #dddddd;
+                  text-align: left;
+                  padding: 8px;
+                }
+                tr:nth-child(even) {
+                  background-color: #dddddd;
+                }
+            </style>
+            <table>
+                <tr>
+                    <th>Negara</th>
+                    <th>Nama Fasilitas</th>
+                    <th>Alamat</th>
+                </tr>
+                <tr>
+                    <td>Singapore</td>
+                    <td><a href="https://safetravel.changiairport.com/arrivalswabtest/en.html#/">Safe Travel</a></td>
+                    <td>Changi Airport, Airport Blvd., Singapore</td>
+                </tr>
+                <tr>
+                    <td>Singapore</td>
+                    <td><a href="https://www.rafflesmedicalgroup.com/raffles-connect/covid-19-swab-test/">Raffles Medical Center</a></td>
+                    <td>10 Tampines Central 1, #03-28, Singapore 529536</td>
+                </tr>
+                <tr>    
+                    <td>Singapore</td>
+                    <td><a href="https://www.parkwayshenton.com/covid-19/pre-departure-test">Parkway Shenton Medical Group</a></td>
+                    <td>18 Toh Yi Dr, #01-103, Block 18, Singapore 590018</td>
+                </tr>
+                <tr>    
+                    <td>Singapore</td>
+                    <td><a href="https://atamed.sg/book-covid-19-pre-departure-test?gclid=CjwKCAjwiY6MBhBqEiwARFSCPvv_8_mIQCkG4Mktq59HOzotmVE5ONLioBYbkZnaj4SDTp7rk4g_ShoCxKcQAvD_BwE">Ata Medical</a></td>
+                    <td>Anson House, 72 Anson Rd #01-02, Singapore 079911</td>
+                </tr>
+                <tr>
+                    <td>Malaysia</td>
+                    <td><a href="http://www.malaysiaairports.com.my/media-centre/news/new-private-covid-19-screening-facility-klia-now-open">BP Clinical Lab</a></td>
+                    <td>Kuala Lumpur International Airport, Sepang Selangor Darul Ehsan, Malaysia</td>
+                </tr>
+                <tr>    
+                    <td>Malaysia</td>
+                    <td><a href="https://klinik-sairamserikembangan.business.site/">Klinik Sairam Seri Kembangan</a></td>
+                    <td>No. 39 G, Jalan Atmosphere 1, Pusat Perniagaan The Atmosphere, 43300 Seri Kembangan, Selangor, Malaysia</td>
+                </tr>
+                <tr>    
+                    <td>Malaysia</td>
+                    <td><a href="https://klihc.com.my/covid-19/">Kuala Lumpur International Health Care Centre</a></td>
+                    <td>500-1-6, Wisma Indah, Jln Tun Razak, 55100 Kuala Lumpur, Malaysia</td>
+                </tr>
+                <tr>    
+                    <td>Malaysia</td>
+                    <td><a href="https://www.pantai.com.my/klang/drive-thru-service-covid-19-test">Pantai Hospital Klang</a></td>
+                    <td>Lot 5921, Persiaran Raja Muda Musa, Taman Radzi, 41200 Klang, Selangor, Malaysia</td>
+                </tr>
+                <tr>    
+                    <td>Malaysia</td>
+                    <td><a href="https://klinik-sairamserikembangan.business.site/">Dr. Tan and Partners</a></td>
+                    <td>25-1, Jalan PJU 1/3f, Sunway Mas Commercial Center, 47301 Petaling Jaya, Selangor, Malaysia</td>
+                </tr>
+                <tr>
+                    <td>Thailand</td>
+                    <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Phraram 9 Hospital</a></td>
+                    <td>99 Rama IX Rd, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
+                </tr>
+                <tr>    
+                    <td>Thailand</td>
+                    <td><a href="https://www.bangkokhospital.com/en/package/covid-19-testing-package">Bangkok Hospital</a></td>
+                    <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
+                </tr>
+          </table>
+        </body>
+    </div>
+    <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        /*An array containing all the country names in the world:*/
+        var countries = ["Singapore", "Malaysia", "Thailand"];
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), countries);
+
+        $(document).on('submit','#countryForm',function(e) {
+        e.preventDefault();
+
+        $ajax({
+            type:'POST',
+            url:'country/input.html',
+            data: { 
+                country:$('country').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:function(){
+                alert("Cari lokasi tes Swab di negara tujuan?");
+            }
+        })
+    });
+    </script>
+
+{% endblock content %}
+
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_autocomplete -->

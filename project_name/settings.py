@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'support_page',
     # 'hotel_page',
     'hotel_karantina',
+    'get_swabbed',
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'

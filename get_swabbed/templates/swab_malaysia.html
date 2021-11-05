@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Get Swabbed Malaysia!</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container py-3" id="countriesTable">
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+        </style>
+        <header>
+            <div class="get-swabbed-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-5 fw-normal">Get Swabbed Malaysia!</h1>
+                <p class="fs-5 text-muted">Berikut merupakan daftar lokasi tes Swab di Malaysia.
+                    Anda dapat langsung melakukan pemesanan jadwal tes Swab dengan mengunjungi situs yang tertera di bawah ini.
+                </p>
+            </div>
+        </header>
+        <body>
+            <table>
+                <tr>
+                    <th>Nama Fasilitas</th>
+                    <th>Alamat</th>
+                <tr>
+                    <td><a href="http://www.malaysiaairports.com.my/media-centre/news/new-private-covid-19-screening-facility-klia-now-open">BP Clinical Lab</a></td>
+                    <td>Kuala Lumpur International Airport, Sepang Selangor Darul Ehsan, Malaysia</td>
+                    <td><a href="https://klinik-sairamserikembangan.business.site/">Klinik Sairam Seri Kembangan</a></td>
+                    <td>No. 39 G, Jalan Atmosphere 1, Pusat Perniagaan The Atmosphere, 43300 Seri Kembangan, Selangor, Malaysia</td>
+                    <td><a href="https://klihc.com.my/covid-19/">Kuala Lumpur International Health Care Centre</a></td>
+                    <td>500-1-6, Wisma Indah, Jln Tun Razak, 55100 Kuala Lumpur, Malaysia</td>
+                    <td><a href="https://www.pantai.com.my/klang/drive-thru-service-covid-19-test">Pantai Hospital Klang</a></td>
+                    <td>Lot 5921, Persiaran Raja Muda Musa, Taman Radzi, 41200 Klang, Selangor, Malaysia</td>
+                    <td><a href="https://klinik-sairamserikembangan.business.site/">Dr. Tan and Partners</a></td>
+                    <td>25-1, Jalan PJU 1/3f, Sunway Mas Commercial Center, 47301 Petaling Jaya, Selangor, Malaysia</td>
+                </tr>
+            </table>
+        </body>
+    </div>
+{% endblock content %}

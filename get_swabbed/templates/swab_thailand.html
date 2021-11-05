@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Get Swabbed Thailand!</title>
+{% endblock meta %}
+
+{% block content %}
+    <div class="container py-3" id="countriesTable">
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+        </style>
+        <header>
+            <div class="get-swabbed-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-5 fw-normal">Get Swabbed Thailand!</h1>
+                <p class="fs-5 text-muted">Berikut merupakan daftar lokasi tes Swab di Thailand.
+                    Anda dapat langsung melakukan pemesanan jadwal tes Swab dengan mengunjungi situs yang tertera di bawah ini.
+                </p>
+            </div>
+        </header>
+        <body>
+            <table>
+                <tr>
+                    <th>Nama Fasilitas</th>
+                    <th>Alamat</th>
+                <tr>
+                    <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Phraram 9 Hospital</a></td>
+                    <td>99 Rama IX Rd, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
+                    <td><a href="https://www.bangkokhospital.com/en/package/covid-19-testing-package">Bangkok Hospital</a></td>
+                    <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
+                </tr>
+            </table>
+        </body>
+    </div>
+{% endblock content %}

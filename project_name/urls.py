@@ -28,6 +28,7 @@ urlpatterns = [
     path('support-page/', include('support_page.urls')),
     # path('hotel/', include('hotel_page.urls')),
     path('hotel/', include('hotel_karantina.urls')),
+    path('get-swabbed/', include('get_swabbed.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

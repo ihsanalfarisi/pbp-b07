@@ -46,7 +46,7 @@ $(document).ready(function(){
                                 <td>Lot 5921, Persiaran Raja Muda Musa, Taman Radzi, 41200 Klang, Selangor, Malaysia</td>
                             </tr>
                             <tr>    
-                                <td><a href="https://klinik-sairamserikembangan.business.site/">Dr. Tan and Partners</a></td>
+                                <td><a href="https://www.dtapclinic.com/rapid-covid-19-antigen-testing/">Dr. Tan and Partners</a></td>
                                 <td>25-1, Jalan PJU 1/3f, Sunway Mas Commercial Center, 47301 Petaling Jaya, Selangor, Malaysia</td>
                             </tr>
                         </tbody>
@@ -70,7 +70,7 @@ $(document).ready(function(){
                                 <td>Changi Airport, Airport Blvd., Singapore</td>
                             </tr>
                             <tr>    
-                                <td><a href="https://www.rafflesmedicalgroup.com/raffles-connect/covid-19-swab-test/">Raffles Medical Center</a></td>
+                                <td><a href="https://www.rafflesmedicalgroup.com/clinic/raffles-medical-tampines-one/">Raffles Medical Center</a></td>
                                 <td>10 Tampines Central 1, #03-28, Singapore 529536</td>
                             </tr>
                             <tr>    
@@ -102,12 +102,12 @@ $(document).ready(function(){
                         </thead>
                         <tbody>
                             <tr>
-                                <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Phraram 9 Hospital</a></td>
+                                <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Praram 9 Hospital</a></td>
                                 <td>99 Rama IX Rd, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
                             </tr>
                             <tr>    
                                 <td><a href="https://www.bangkokhospital.com/en/package/covid-19-testing-package">Bangkok Hospital</a></td>
-                                <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
+                                <td>2 Soi Phetchaburi 47 Yaek 10, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
                             </tr>
                             <tr>    
                                 <td><a href="https://www.medconsultasia.com/covidtesting">MedConsult Clinic</a></td>

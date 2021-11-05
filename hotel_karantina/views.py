@@ -17,23 +17,6 @@ def index(request):
         print(response['Country'])
     return render(request, 'hotel_index.html', response)
 
-# def index2(request):
-#     hotel_country = [] 
-#     valid_country = ["Singapore", "Malaysia", "Thailand", "Indonesia"] 
-#     hotels = HotelKarantina.objects.all()
-
-#     for i in hotels:
-#         hotel_country.append(i['country']) 
-
-#     form = HotelForm(request.POST or None) 
-#     response = {'form': form, 'hotels': hotels}
-#     if (form.is_valid() and request.method == 'POST'):
-#         if (not form.cleaned_data.get("country") in hotel_country): 
-#             if (form.cleaned_data.get("country") in valid_country): 
-#                 form.save()
-#                 return redirect(index)
-#     return render(request, 'hotel_index.html', response)
-
 def json(request):
     data = serializers.serialize('json', HotelKarantina.objects.only('country', 'nama_hotel', 'foto', 'harga', 'detail'))
     return HttpResponse(data, content_type="application/json")

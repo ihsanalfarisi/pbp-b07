@@ -37,16 +37,16 @@ $(document).ready(function(){
                 html = html + `
                 <div class="col-lg-6 col-md-6"> 
                   <div class="card" style="margin-bottom: 30px;">
-                    <div class="card-header">
-                      ${item.fields.country}
-                    </div>
                     <img class="card-img-top" src="${item.fields.foto}" alt="hotel image">
                     <div class="card-body">
                       <h5 class="card-title"><strong>${item.fields.nama_hotel}</strong></h5>
                       <p class="card-text"><strong>Harga: </strong>${item.fields.harga}</p>
                     </div>
-                    <div class="card-footer" style="text-align: center;">
-                      <a href='${item.fields.detail}' class="btn btn-primary">Info Detail</a>
+                    <div class="card-footer" style="padding: 0px 0px 0px 0px">
+                      <div class="d-grid gap-2">
+                        <a href='${item.fields.detail}' class="btn btn-primary">Info Detail</a>
+                      </div>                
+                    </div><div class="card-footer" style="padding: 0px 0px 0px 0px">                      
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block meta %}
 <title>Log In</title>
 {% endblock meta %}
@@ -26,7 +25,7 @@
             <p></p>
             {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-danger alert-dismissable" role="alert">
+            <div class="alert alert-danger" role="alert">
                 {{ message }}
             </div>
             {% endfor %}
@@ -39,8 +38,5 @@
     </div>
     <p class="text-center mt-4">Belum memiliki akun? <a href="/signup">Silakan membuat akun</a>.</p>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{% static 'js/main.js' %}"></script>
 
 {% endblock %}

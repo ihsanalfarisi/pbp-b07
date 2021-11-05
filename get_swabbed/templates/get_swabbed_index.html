@@ -17,11 +17,13 @@
                 <!--Make sure the form has the autocomplete function switched off:-->
                 <form id="countryForm" method="POST" class="form-inline" autocomplete="off" action="/action_page.php">
                     {% csrf_token %}
-                    <div class="autocomplete" style="width:350px;">
+                    <div class="autocomplete" style="text-align: center;">
                         <p>Pilih negara tujuan berikut: Malaysia | Singapore | Thailand</p>
                         <input id="myInput" type="text" name="myCountry" placeholder="Country">
+                        <br>
+                        <button type="submit" class='btn btn-primary' data-bs-dismiss='modal'>Search</button>
                     </div>
-                    <input type="submit">
+                    
                 </form>
         </header>
         <body>
@@ -41,11 +43,11 @@
                   background-color: #dddddd;
                 }
             </style>
-            <table>
+            <table id="list_swab">
                 <tr>
-                    <th>Negara</th>
-                    <th>Nama Fasilitas</th>
-                    <th>Alamat</th>
+                  <th>Negara</th>
+                  <th>Nama Fasilitas</th>
+                  <th>Alamat</th>
                 </tr>
                 <tr>
                     <td>Singapore</td>
@@ -103,9 +105,11 @@
                     <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
                 </tr>
           </table>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="{% static 'js/get_swabbed.js' %}"></script>
         </body>
     </div>
-    <script>
+    <!-- <script>
         function autocomplete(inp, arr) {
           /*the autocomplete function takes two arguments,
           the text field element and an array of possible autocompleted values:*/
@@ -223,7 +227,7 @@
             }
         })
     });
-    </script>
+    </script> -->
 
 {% endblock content %}
 

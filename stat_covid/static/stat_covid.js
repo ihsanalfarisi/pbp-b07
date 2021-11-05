@@ -39,9 +39,9 @@ $(document).ready(function () {
         var date = data[code]["data"][length - 1]["date"];
 
         $(this).html(
-          "Coronavirus Cases:<br/>" +
+          "Kasus Virus Corona:<br/>" +
             numberWithCommas(cases) +
-            "<br/><br/><br/><span class = 'fs-6'>Last updated on " +
+            "<br/><br/><br/><span class = 'fs-6'>Terakhir diperbarui: " +
             date +
             "</span>"
         );

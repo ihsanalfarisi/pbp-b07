@@ -12,6 +12,6 @@ class CountryForm(forms.ModelForm):
             'country_name': forms.TextInput(attrs={
                 'class': 'form-control', 
                 'id':'inputCountry',
-                'placeholder':'Search' 
+                'placeholder':'Telusuri' 
             })
         }

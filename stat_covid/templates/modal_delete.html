@@ -8,17 +8,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body fs-3 text-center">
-        Are you sure you want to delete {{ country.country_name }}?
+        Anda yakin ingin menghapus {{ country.country_name }}?
       </div>
       <div class="modal-footer p-1">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancel
+          Batal
         </button>
         <a
           class="btn btn-danger"
           href="{% url 'delete-country' country.id %}"
           role="button"
-          >Delete</a
+          >Hapus</a
         >
       </div>
     </div>

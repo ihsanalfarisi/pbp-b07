@@ -11,113 +11,154 @@
             <div class="get-swabbed-header p-3 pb-md-4 mx-auto text-center">
                 <h1 class="display-5 fw-normal">Get Swabbed!</h1>
                 <p class="fs-5 text-muted">Banyak negara mengharuskan pendatang internasional melakukan tes Swab Covid-19 ketika mereka tiba di negara tersebut. 
-                    Anda dapat melihat fasilitas penyedia tes Swab Covid-19 di negara tujuan dengan memanfaatkan fitur Get Swabbed! ini.
-                    <br> <br> Informasi lainnya mengenai regulasi di negara tujuan dapat dibaca di <a href='{{regulasi.urls}}'>regulasi</a>.</p>
+                    Anda dapat melihat fasilitas penyedia tes swab Covid-19 di negara tujuan dengan memanfaatkan fitur Get Swabbed! ini.
+                    <br> <br> Informasi lainnya mengenai regulasi di negara tujuan dapat dibaca di <a href="/regulasi">regulasi</a>.</p>
             </div>
-                <!--Make sure the form has the autocomplete function switched off:-->
-                <form id="countryForm" method="POST" class="form-inline" autocomplete="off" action="/action_page.php">
-                    {% csrf_token %}
-                    <div class="autocomplete" style="text-align: center;">
-                        <p>Pilih negara tujuan berikut: Malaysia | Singapore | Thailand</p>
-                        <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
-                        <input type="submit" class="btn btn-secondary" value="Pilih" />
-                        <!-- <br>
-                        <button type="submit" class='btn btn-primary' data-bs-dismiss='modal'>Pilih</button> -->
-                    </div>
-                </form>
         </header>
-        <body>
-          <div class="container py-3" id="countriesTable">
-            <table id="list_swab" class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Negara</th>
-                  <th scope="col">Nama Fasilitas</th>
-                  <th scope="col">Alamat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Malaysia</td>
-                  <td><a href="http://www.malaysiaairports.com.my/media-centre/news/new-private-covid-19-screening-facility-klia-now-open">BP Clinical Lab</a></td>
-                  <td>Kuala Lumpur International Airport, Sepang Selangor Darul Ehsan, Malaysia</td>
-                </tr>
-                <tr>    
-                  <td>Malaysia</td>
-                  <td><a href="https://klinik-sairamserikembangan.business.site/">Klinik Sairam Seri Kembangan</a></td>
-                  <td>No. 39 G, Jalan Atmosphere 1, Pusat Perniagaan The Atmosphere, 43300 Seri Kembangan, Selangor, Malaysia</td>
-                </tr>
-                <tr>    
-                  <td>Malaysia</td>
-                  <td><a href="https://klihc.com.my/covid-19/">Kuala Lumpur International Health Care Centre</a></td>
-                  <td>500-1-6, Wisma Indah, Jln Tun Razak, 55100 Kuala Lumpur, Malaysia</td>
-                </tr>
-                <tr>    
-                  <td>Malaysia</td>
-                  <td><a href="https://www.pantai.com.my/klang/drive-thru-service-covid-19-test">Pantai Hospital Klang</a></td>
-                  <td>Lot 5921, Persiaran Raja Muda Musa, Taman Radzi, 41200 Klang, Selangor, Malaysia</td>
-                </tr>
-                <tr>    
-                  <td>Malaysia</td>
-                  <td><a href="https://klinik-sairamserikembangan.business.site/">Dr. Tan and Partners</a></td>
-                  <td>25-1, Jalan PJU 1/3f, Sunway Mas Commercial Center, 47301 Petaling Jaya, Selangor, Malaysia</td>
-                </tr>
-                <tr>
-                  <td>Singapore</td>
-                  <td><a href="https://safetravel.changiairport.com/arrivalswabtest/en.html#/">Safe Travel</a></td>
-                  <td>Changi Airport, Airport Blvd., Singapore</td>
-                </tr>
-                <tr>
-                  <td>Singapore</td>
-                  <td><a href="https://www.rafflesmedicalgroup.com/raffles-connect/covid-19-swab-test/">Raffles Medical Center</a></td>
-                  <td>10 Tampines Central 1, #03-28, Singapore 529536</td>
-                </tr>
-                <tr>    
-                  <td>Singapore</td>
-                  <td><a href="https://www.parkwayshenton.com/covid-19/pre-departure-test">Parkway Shenton Medical Group</a></td>
-                  <td>18 Toh Yi Dr, #01-103, Block 18, Singapore 590018</td>
-                </tr>
-                <tr>    
-                  <td>Singapore</td>
-                  <td><a href="https://clinic.platomedical.com/book/bWlubWVk/c58a16836ace40cfa64475408343f5d4/4OymQwS">Minmed Clinic (Pasir Ris)</a></td>
-                  <td>1 Pasir Ris Central Street 3 #05-09 White Sands, Singapore 518457</td>
-                </tr>
-                <tr>    
-                  <td>Singapore</td>
-                  <td><a href="https://atamed.sg/book-covid-19-pre-departure-test?gclid=CjwKCAjwiY6MBhBqEiwARFSCPvv_8_mIQCkG4Mktq59HOzotmVE5ONLioBYbkZnaj4SDTp7rk4g_ShoCxKcQAvD_BwE">Ata Medical</a></td>
-                  <td>Anson House, 72 Anson Rd #01-02, Singapore 079911</td>
-                </tr>
-                <tr>
-                  <td>Thailand</td>
-                  <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Phraram 9 Hospital</a></td>
-                  <td>99 Rama IX Rd, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
-                </tr>
-                <tr>    
-                  <td>Thailand</td>
-                  <td><a href="https://www.bangkokhospital.com/en/package/covid-19-testing-package">Bangkok Hospital</a></td>
-                  <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
-                </tr>
-                <tr>    
-                  <td>Thailand</td>
-                  <td><a href="https://www.medconsultasia.com/covidtesting">MedConsult Clinic</a></td>
-                  <td>Floor 3, Building 2 of The Racquet Club, Sukhumvit 49/9 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110, Thailand</td>
-                </tr>
-                <tr>    
-                  <td>Thailand</td>
-                  <td><a href="https://medex.co.th/service/covid-test/">MedEx Thailand</a></td>
-                  <td>Sukhumvit 48, Phra Khanong Center (Near BTS Phra Khanong)</td>
-                </tr>
-                <tr>    
-                  <td>Thailand</td>
-                  <td><a href="https://www.thaitravelclinic.com/FrontNews/covid19-med-certificate-en-2.html">Thai Travel Clinic</a></td>
-                  <td>Ratchawithi Rd, Thung Phaya Thai, Ratchathewi, Bangkok 10400, Thailand</td>
-                </tr>
-              </tbody>
-          </table>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-          <script src="{% static 'js/get_swabbed.js' %}"></script>
-        </body>
-    </div>
+
+        <div>
+          {% if user.is_authenticated %} 
+            <!--Make sure the form has the autocomplete function switched off:-->
+            <form id="countryForm" method="POST" class="form-inline" autocomplete="off" action="/action_page.php">
+            {% csrf_token %}
+            <div class="autocomplete" style="text-align: center;">
+            <p>Pilih negara tujuan berikut: Malaysia | Singapore | Thailand</p>
+                <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+                <input type="submit" class="btn btn-secondary" value="Pilih" />
+            </div>
+            </form>
+            <body>
+              <div class="container py-3" id="countriesTable">
+                <table id="list_swab" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Negara</th>
+                      <th scope="col">Nama Fasilitas</th>
+                      <th scope="col">Alamat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Malaysia</td>
+                      <td><a href="http://www.malaysiaairports.com.my/media-centre/news/new-private-covid-19-screening-facility-klia-now-open">BP Clinical Lab</a></td>
+                      <td>Kuala Lumpur International Airport, Sepang Selangor Darul Ehsan, Malaysia</td>
+                    </tr>
+                    <tr>    
+                      <td>Malaysia</td>
+                      <td><a href="https://klinik-sairamserikembangan.business.site/">Klinik Sairam Seri Kembangan</a></td>
+                      <td>No. 39 G, Jalan Atmosphere 1, Pusat Perniagaan The Atmosphere, 43300 Seri Kembangan, Selangor, Malaysia</td>
+                    </tr>
+                    <tr>    
+                      <td>Malaysia</td>
+                      <td><a href="https://klihc.com.my/covid-19/">Kuala Lumpur International Health Care Centre</a></td>
+                      <td>500-1-6, Wisma Indah, Jln Tun Razak, 55100 Kuala Lumpur, Malaysia</td>
+                    </tr>
+                    <tr>    
+                      <td>Malaysia</td>
+                      <td><a href="https://www.pantai.com.my/klang/drive-thru-service-covid-19-test">Pantai Hospital Klang</a></td>
+                      <td>Lot 5921, Persiaran Raja Muda Musa, Taman Radzi, 41200 Klang, Selangor, Malaysia</td>
+                    </tr>
+                    <tr>    
+                      <td>Malaysia</td>
+                      <td><a href="https://klinik-sairamserikembangan.business.site/">Dr. Tan and Partners</a></td>
+                      <td>25-1, Jalan PJU 1/3f, Sunway Mas Commercial Center, 47301 Petaling Jaya, Selangor, Malaysia</td>
+                    </tr>
+                    <tr>
+                      <td>Singapore</td>
+                      <td><a href="https://safetravel.changiairport.com/arrivalswabtest/en.html#/">Safe Travel</a></td>
+                      <td>Changi Airport, Airport Blvd., Singapore</td>
+                    </tr>
+                    <tr>
+                      <td>Singapore</td>
+                      <td><a href="https://www.rafflesmedicalgroup.com/raffles-connect/covid-19-swab-test/">Raffles Medical Center</a></td>
+                      <td>10 Tampines Central 1, #03-28, Singapore 529536</td>
+                    </tr>
+                    <tr>    
+                      <td>Singapore</td>
+                      <td><a href="https://www.parkwayshenton.com/covid-19/pre-departure-test">Parkway Shenton Medical Group</a></td>
+                      <td>18 Toh Yi Dr, #01-103, Block 18, Singapore 590018</td>
+                    </tr>
+                    <tr>    
+                      <td>Singapore</td>
+                      <td><a href="https://clinic.platomedical.com/book/bWlubWVk/c58a16836ace40cfa64475408343f5d4/4OymQwS">Minmed Clinic (Pasir Ris)</a></td>
+                      <td>1 Pasir Ris Central Street 3 #05-09 White Sands, Singapore 518457</td>
+                    </tr>
+                    <tr>    
+                      <td>Singapore</td>
+                      <td><a href="https://atamed.sg/book-covid-19-pre-departure-test?gclid=CjwKCAjwiY6MBhBqEiwARFSCPvv_8_mIQCkG4Mktq59HOzotmVE5ONLioBYbkZnaj4SDTp7rk4g_ShoCxKcQAvD_BwE">Ata Medical</a></td>
+                      <td>Anson House, 72 Anson Rd #01-02, Singapore 079911</td>
+                    </tr>
+                    <tr>
+                      <td>Thailand</td>
+                      <td><a href="https://www.praram9.com/en/covid-19-testing-for-foreigners/">Phraram 9 Hospital</a></td>
+                      <td>99 Rama IX Rd, Bang Kapi, Huai Khwang, Bangkok 10310, Thailand</td>
+                    </tr>
+                    <tr>    
+                      <td>Thailand</td>
+                      <td><a href="https://www.bangkokhospital.com/en/package/covid-19-testing-package">Bangkok Hospital</a></td>
+                      <td>2 Soi Soonvijai 7, New Petchburi Rd., Huaykwang, Bangkok 10310 Thailand</td>
+                    </tr>
+                    <tr>    
+                      <td>Thailand</td>
+                      <td><a href="https://www.medconsultasia.com/covidtesting">MedConsult Clinic</a></td>
+                      <td>Floor 3, Building 2 of The Racquet Club, Sukhumvit 49/9 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110, Thailand</td>
+                    </tr>
+                    <tr>    
+                      <td>Thailand</td>
+                      <td><a href="https://medex.co.th/service/covid-test/">MedEx Thailand</a></td>
+                      <td>Sukhumvit 48, Phra Khanong Center (Near BTS Phra Khanong)</td>
+                    </tr>
+                    <tr>    
+                      <td>Thailand</td>
+                      <td><a href="https://www.thaitravelclinic.com/FrontNews/covid19-med-certificate-en-2.html">Thai Travel Clinic</a></td>
+                      <td>Ratchawithi Rd, Thung Phaya Thai, Ratchathewi, Bangkok 10400, Thailand</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </body>
+        </div>
+
+        {% else %}
+        <div class="alert alert-primary d-flex align-items-center" role="alert" style="border: 5px; margin: 45px;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+            viewBox="0 0 16 16"
+            role="img"
+            aria-label="Warning:"
+          >
+            <path
+              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+          <div>Login terlebih dahulu</div>
+        </div>
+        <form action=" " method="POST">
+          <fieldset disabled>
+            <div class="row justify-content-center">
+              <div
+                class="col-8 ps-0 pe-1"
+                style="text-align: center;"
+                data-bs-toggle="popover"
+                data-bs-trigger="hover focus"
+                data-bs-placement="bottom"
+                data-bs-content="Login terlebih dahulu"
+              >
+                <p>Cari hotel karantina di negara berikut: Singapore | Malaysia | Thailand</p>
+                <div class="autocomplete" style="text-align: center;">
+                    {% csrf_token %}
+                    <input id="myInput" type="text" name="myCountry" placeholder="Negara Tujuan">
+                    <input type="submit" class="btn btn-secondary" value="Pilih" />
+                </div>
+            </div>
+          </fieldset>
+        </form>
+      {% endif %}
+
     <script>
         function autocomplete(inp, arr) {
           /*the autocomplete function takes two arguments,
@@ -220,23 +261,10 @@
         var countries = ["Singapore", "Malaysia", "Thailand"];
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
         autocomplete(document.getElementById("myInput"), countries);
-
-        $(document).on('submit','#countryForm',function(e) {
-        e.preventDefault();
-
-        $ajax({
-            type:'POST',
-            url:'country/input.html',
-            data: { 
-                country:$('country').val(),
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
-            },
-            success:function(){
-                alert("Cari lokasi tes Swab di negara tujuan?");
-            }
-        })
-    });
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/get_swabbed.js' %}"></script>
 
 {% endblock content %}
 

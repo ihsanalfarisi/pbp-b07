@@ -18,6 +18,9 @@ $(document).ready(function(){
                 if(negara.toUpperCase() === 'MALAYSIA'){
                 $("#list_swab").empty();
                 $("#list_swab").append(`
+                    <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+                    Lokasi tes Swab di <span style="color: rgb(0, 128, 255);"><strong>Malaysia</strong></span>
+                    </h3>
                     <table id="list_swab" class="table table-hover">
                         <thead>
                             <tr>
@@ -51,6 +54,9 @@ $(document).ready(function(){
                 `)}else if(negara.toUpperCase() === 'SINGAPORE'){
                     $("#list_swab").empty();
                     $("#list_swab").append(`
+                        <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+                        Lokasi tes Swab di <span style="color: rgb(0, 128, 255);"><strong>Singapore</strong></span>
+                        </h3>
                         <table id="list_swab" class="table table-hover">
                         <thead>
                             <tr>
@@ -84,6 +90,9 @@ $(document).ready(function(){
                     `)}else if(negara.toUpperCase() === 'THAILAND'){
                         $("#list_swab").empty();
                         $("#list_swab").append(`
+                        <h3 style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+                        Lokasi tes Swab di <span style="color: rgb(0, 128, 255);"><strong>Thailand</strong></span>
+                        </h3>
                         <table id="list_swab" class="table table-hover">
                         <thead>
                             <tr>

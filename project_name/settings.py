@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     # 'hotel_page',
     'hotel_karantina',
     'get_swabbed',
+    "corsheaders",
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
@@ -78,6 +79,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_METHODS = [
+'GET',
+'POST',
 ]
 
 ROOT_URLCONF = 'project_name.urls'

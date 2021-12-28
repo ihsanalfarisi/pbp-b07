@@ -11,3 +11,4 @@ Pillow>=8.3.2
 dropbox==11.22.0
 django-storages==1.12.2
 django-dropbox-storage==0.4.1
+django-cors-headers>=3.10.1

@@ -1,12 +1,16 @@
-from django.forms.models import model_to_dict
-from django.http import response
-from django.http.response import JsonResponse
+import json
+from django.http.response import HttpResponse, JsonResponse
+from django.core import serializers
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from .models import Country
 from .forms import CountryForm
+from django.views.decorators.csrf import csrf_exempt
 import pycountry
 import math
+
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 # Create your views here.
 class StatCovid(View):
@@ -74,5 +78,18 @@ def deleteCountry(request, country_id):
     country.delete()
     return redirect('StatCovid')
 
-    
+def addCountry(request, user_id, country_name):
+    country = Country(country_name=country_name)
+    country.save()
+    user = User.objects.get(pk=user_id)
+    user.country.add(country)
+
+    data = serializers.serialize('json', Country.objects.filter(pk=country.pk))
+    return HttpResponse(data, content_type="application/json")
+
+def getCountries(request, user_id):
+    print(request.user)
+    data = serializers.serialize('json', Country.objects.filter(user=user_id))
+
+    return HttpResponse(data, content_type="application/json")   
 

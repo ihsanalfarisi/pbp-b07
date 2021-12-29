@@ -17,14 +17,6 @@ $(document).ready(function () {
         if (!data[code]) return; // kalau tidak ada di return
         $(this).html(data[code]["location"] + "<br/><br/>");
       });
-    },
-  });
-
-  // Nambahain total yang covid + tanggal
-  $.ajax({
-    type: "GET",
-    url: "https://covid.ourworldindata.org/data/owid-covid-data.json/",
-    success: function (data) {
       $("h3").each(function () {
         var code = $(this).data("code"); // atribut data-code
 
@@ -45,6 +37,41 @@ $(document).ready(function () {
             date +
             "</span>"
         );
+      });
+    },
+    error: function () {
+      $.ajax({
+        type: "GET",
+        // proxy server
+        url: "https://cors-anywhere.herokuapp.com/https://covid.ourworldindata.org/data/owid-covid-data.json/",
+        success: function (data) {
+          $("h5").each(function () {
+            var code = $(this).data("code"); // atribut data-code
+            if (!data[code]) return; // kalau tidak ada di return
+            $(this).html(data[code]["location"] + "<br/><br/>");
+          });
+          $("h3").each(function () {
+            var code = $(this).data("code"); // atribut data-code
+
+            if (!data[code]) return; // kalau tidak ada di return
+            if (!data[code]["data"]) return; // kalau tidak ada di return
+            var length = data[code]["data"].length;
+
+            if (!data[code]["data"][length - 1]["total_cases"]) return; // kalau tidak ada di return
+            var cases = data[code]["data"][length - 1]["total_cases"];
+
+            if (!data[code]["data"][length - 1]["date"]) return; // kalau tidak ada di return
+            var date = data[code]["data"][length - 1]["date"];
+
+            $(this).html(
+              "Kasus Virus Corona:<br/>" +
+                numberWithCommas(cases) +
+                "<br/><br/><br/><span class = 'fs-6'>Terakhir diperbarui: " +
+                date +
+                "</span>"
+            );
+          });
+        },
       });
     },
   });

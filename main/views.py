@@ -1,8 +1,11 @@
+import json
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from .models import Fitur, Ulasan
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import NewUserForm
 
@@ -46,3 +49,23 @@ def logout_request(request):
     logout(request)
     messages.info(request, "Anda berhasil keluar.")
     return redirect("main:home")
+
+@csrf_exempt
+def login_flutter(request):
+    # username = request.get("username")
+    # password = request.get("password")
+    print(request.method)
+    # print(request.GET)
+    print(request.body)
+    data = json.loads(request.body)
+    username = data["username"]
+    password = data["password"]
+    print(f"{username} n {password}")
+    user = authenticate(username=username, password=password)
+    print(user)
+    if user is not None:
+        print("Hore")
+        return JsonResponse({"status": "logged in", "username":username, "email":user.email, "userID":request.user.pk})
+    else:
+        print("Sad")
+        return JsonResponse({"out": "no"})

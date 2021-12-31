@@ -32,9 +32,10 @@ def json(request):
 def get_swabbed_detail(request, id):
     objects_id = [x.id for x in CountryDetail.objects.all() if x.countryName == id]
     print(objects_id)
-    data =[]
-    for i in objects_id:
-        data.append(serializers.serialize('json', CountryDetail.objects.filter(id=i)))
+    data=serializers.serialize('json', CountryDetail.objects.filter(id__in=objects_id))
+    # data =[]
+    # for i in objects_id:
+    #     data+=serializers.serialize('json', CountryDetail.objects.filter(id=i))
     return HttpResponse(data, content_type="application/json")
 
 def malaysia(request):

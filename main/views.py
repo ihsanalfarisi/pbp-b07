@@ -65,7 +65,7 @@ def login_flutter(request):
     print(user)
     if user is not None:
         print("Hore")
-        return JsonResponse({"status": "logged in", "username":username, "email":user.email, "userID":request.user.pk})
+        return JsonResponse({"status": "logged in", "username":username, "email":user.email, "userID":user.pk})
     else:
         print("Sad")
         return JsonResponse({"out": "no"})

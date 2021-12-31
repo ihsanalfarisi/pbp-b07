@@ -9,5 +9,5 @@ urlpatterns = [
     # path('country/input/', countryForm),
     path('json', json),
     # flutter
-    path('swab-detail/<CountryName>', get_swabbed_detail),
+    path('swab-detail/<id>', get_swabbed_detail),
 ]

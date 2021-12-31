@@ -8,4 +8,6 @@ urlpatterns = [
     path('thailand.html/', thailand, name='thailand'),
     # path('country/input/', countryForm),
     path('json', json),
+    # flutter
+    path('swab-detail/<CountryName>', get_swabbed_detail),
 ]

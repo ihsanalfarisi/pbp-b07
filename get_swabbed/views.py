@@ -28,6 +28,10 @@ def json(request):
     data = serializers.serialize('json', Get_Swabbed.objects.all())
     return HttpResponse(data, content_type="application/json")
 
+def get_swabbed_detail(request, id):
+    data = serialize('json', CountryDetail.objects.filter(CountryName = id))
+    return HttpResponse(data, content_type="application/json")
+
 def malaysia(request):
     return render(request, 'swab_malaysia.html')
 

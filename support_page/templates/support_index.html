@@ -17,23 +17,23 @@
     <div class="indexcontent-wrapper">
         <h1 class="display-5 fw-normal text-center">Ada Keluhan?</h1>
         <p class="fs-5 text-muted text-center">
-            Wadah penyaluran keluhan terkait keselewenangan protokol COVID-19 yang kamu temui!
+            Wadah penyaluran keluhan terkait keselewenangan protokol COVID-19 yang kamu temui.
         </p>
         <br>
-        <h5 style="margin-top: 10px;">Segera Laporkan Keluhanmu</h5>
+        <h6 style="margin-top: 10px;">Klik tombol dibawah ini untuk melaporkan keluhanmu!<h6>
 
         {% if user.is_authenticated %}
         <form action=" " method="POST" style="margin-top: 20px;" >
             <div class="support-content-wrapper">
                 <a href="/support-page/add_support/">
                     <div class="support-content">
-                    <button type="button" class="btn btn-primary">Isi Formulir Keluhan</button>
+                    <button type="button" class="btn btn-primary">Isi Form</button>
                     </div>
                 </a>
                 <br>
                 <a href="/support-page/support_list/">
                     <div class="support-content">
-                    <button type="button" class="btn btn-secondary">Lihat Keluhanmu</button>
+                    <button type="button" class="btn btn-secondary">Lihat List Keluhan</button>
                     </div>
                 </a>
             </div>
